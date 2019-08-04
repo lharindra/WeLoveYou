@@ -2249,12 +2249,12 @@ blockquote,
 .scheme_original input[type="button"]:not([class*="sc_button_hover_"]):hover,
 .scheme_original button:not([class*="sc_button_hover_"]):hover,
 .scheme_original .sc_button.sc_button_style_filled:hover {
-  background-color: #ff7e27;
+  background-color: #5e0909;
   color: #ffffff
 }
 
-.scheme_original .sc_button.sc_button_style_filled:hover {
-  background-color: #ff7e27 !important;
+.scheme_original .sc_button.sc_button_style_filled1:hover {
+  background-color: #000000 !important;
   color: #ffffff !important
 }
 
@@ -2272,8 +2272,13 @@ blockquote,
   color: #ffffff
 }
 
+.scheme_original .sc_button.sc_button_style_filled1 {
+  background-color: #ff7e27;
+  color: #ffffff
+}
+
 .scheme_original .sc_button.sc_button_style_filled2:hover {
-  background-color: #84c54e;
+  background-color: #300bd6;
   color: #ffffff
 }
 
@@ -3134,11 +3139,11 @@ blockquote,
 }
 
 .scheme_original .sc_skills_counter .sc_skills_item.sc_skills_style_1 .sc_skills_count {
-  color: #ffe400
+  color: #000000
 }
 
 .scheme_original .sc_skills_counter .sc_skills_item.sc_skills_style_1 .sc_skills_info {
-  color: #ffffff
+  color: #e41c26
 }
 
 .scheme_original .sc_skills_counter .sc_skills_item.sc_skills_style_2 .sc_skills_count {
@@ -10178,7 +10183,7 @@ blockquote,
   background-color: #f6f5f2 !important;
 }
 .block_1474283141363 {
-  background-image: url('../images/bg-3.jpg') !important;
+  background-image: url('../images/go_to_school.jpg') !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
@@ -10230,7 +10235,7 @@ blockquote,
   background-color: #f6f5f2 !important;
 }
 .block_1474464398176 {
-  background-image: url('../images/bg-4.jpg') !important;
+  background-image: url('../images/raising_hands.jpg') !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
@@ -10307,7 +10312,7 @@ blockquote,
   background-color: #f6f5f2 !important;
 }
 .block_1474464398176 {
-  background-image: url('../images/bg-4.jpg') !important;
+  background-image: url('../images/raising_hands.jpg') !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
@@ -10594,6 +10599,7 @@ body.portfolio-2 .page_content_wrap .content_wrap.wrapper {
     display: none;
   }
 }
+
 .woocommerce .mode_buttons, .woocommerce-page .mode_buttons {
   display: none;
 }

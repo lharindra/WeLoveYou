@@ -140,7 +140,7 @@
 .icon-cloud-light:before { content: '\e852'; } /* 'î¡’' */
 .icon-globe-light:before { content: '\e853'; } /* 'î¡“' */
 .icon-inbox-light:before { content: '\e854'; } /* 'î¡”' */
-.icon-cd-light:before { content: '\e855'; } /* 'î¡•' */
+.icon-cd-light:before { content: '\f232'; } /* 'î¡•' */
 .icon-mobile-light:before { content: '\e856'; } /* 'î¡–' */
 .icon-desktop-light:before { content: '\e857'; } /* 'î¡—' */
 .icon-tv-light:before { content: '\e858'; } /* 'î¡˜' */
@@ -311,3 +311,4 @@
 .icon-down-open:before { content: '\e8fd'; } /* 'î£½' */
 .icon-text-quotes:before { content: '\e8fe'; } /* 'î£¾' */
 .icon-eye-inv:before { content: '\f082'; } /* 'ï‚‚' */
+.icon-whatsapp:before {content: '\f232'}

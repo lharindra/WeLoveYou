@@ -2638,7 +2638,7 @@ body:not(.top_panel_fixed) .top_panel_position_over .top_panel_bottom {
     margin: 1.6em 0 1em 0.8em;
 }
 .top_panel_wrap .logo_main {
-	max-height:300px;
+	max-height:75px;
 	width:auto;
 }
 .logo a {
@@ -4097,7 +4097,7 @@ li.opened > a > .open_child_menu:before {
 	margin-bottom:0;
 }
 .post_featured img {
-	/*width:100%;*/
+	width:100%;
 	height:auto;
 }
 
@@ -4512,6 +4512,7 @@ blockquote cite {
 	position:relative;
 	top: 0;
 	opacity:1;
+	width: 500px;
 }
 .isotope_wrap .isotope_item_colored .post_item .hover_icon:before,
 .isotope_wrap .isotope_item_grid .post_item .hover_icon:before,
