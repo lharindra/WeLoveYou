@@ -538,7 +538,6 @@ fieldset legend {
 	color:#da6f5b;
 }
 
-
 /* Accent */
 .sc_input_hover_accent input[type="text"],
 .sc_input_hover_accent input[type="number"],
@@ -1320,6 +1319,7 @@ fieldset legend {
 /* Columns width */
 .column-1, .column-1_1, .column-2_2, .column-3_3, .column-4_4, .column-5_5, .column-6_6, .column-7_7, .column-8_8, .column-9_9, .column-10_10, .column-11_11, .column-12_12	{ width:100%; }
 .column-1_2, .column-2_4, .column-3_6, .column-4_8, .column-5_10, .column-6_12	{ width:50%; }
+.column-1_2																		{ display:inline; }
 .column-1_3, .column-2_6, .column-3_9, .column-4_12								{ width:33.33333333%; }
 .column-2_3, .column-4_6, .column-8_12											{ width:66.66666667%; }
 .column-1_4, .column-2_8, .column-3_12											{ width:25%; }
@@ -1579,6 +1579,23 @@ fieldset legend {
   border: 0;
 }
 
+.footer-new-list {
+	width: 33%;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	flex-direction: column;
+
+}
+
+.footer-new-column-1_2 {
+	display: flex !important;
+	flex-basis: 50%;
+	-webkit-box-pack: justify;
+	justify-content: space-between;
+	width: 50%;
+	padding-right: 0% !important;
+}
 
 
 
@@ -6159,7 +6176,7 @@ blockquote cite {
 
 /* Footer widgets */
 .footer_wrap_inner {
-	padding: 6em 0 4.5em;
+	padding: 1em 0 1em;
 }
 .footer_wrap aside {
 	margin-bottom:3.75em;
@@ -6177,12 +6194,10 @@ blockquote cite {
 
 /* Contacts */
 .contacts_wrap_inner {
-	padding:0 0 2em;
 	text-align:left;
 }
 .contacts_wrap .logo {
 	text-align:left;
-    margin-bottom: 0.9em;
     margin-left: 0.2em;
 }
 .contacts_wrap .logo .logo_text {
@@ -6195,15 +6210,20 @@ blockquote cite {
 .contacts_wrap .contacts_address {
 	overflow:hidden;
 	font-size:0.875em;
-	margin-bottom:1.5em;
     line-height: 1.75em;
-    padding-right: 3.5em;
 }
 .footer_wrap_inner.widget_area_inner .width_right > .columns_wrap {
     width: 94%;
 }
 
-
+.footer-new-holder-right-holder__text {
+	font-size: 14px;
+	color: #ff7e27;
+	font-family: 'H','Trebuchet MS',Helvetica;
+    font-weight: 300;
+    padding: 0;
+    line-height: normal;
+}
 
 /* Testimonials and Twitter area */
 .testimonials_wrap.sc_section,
@@ -7189,3 +7209,10 @@ h1 .wpb_text_column p, h2 .wpb_text_column p, h3 .wpb_text_column p, h4 .wpb_tex
 .post-263 .wrapper{
 	overflow: visible;
 }
+
+.footer-new-list_holder{
+	list-style-type:  none;
+	line-height: 1.8 !important; 
+	padding: 0 !important;
+	color: #000;
+  }

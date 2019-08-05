@@ -863,7 +863,7 @@ button.sc_button_size_large.aligncenter,
     margin-bottom: -2.8em;
 }
 .sc_call_to_action_style_2 .sc_call_to_action_featured .featured_bg {
-    background-position: center bottom;
+    background-position: center bottom; 
     background-repeat: no-repeat;
     background-size: auto 92%;
     display: block;
@@ -4828,6 +4828,20 @@ body.sidebar_hide .sc_recent_news_style_news-announce .post_size_small { height:
     border-color: #55acee;
     color: #55acee;
 }
+
+.sc_socials.sc_socials_share .sc_socials_item a.social_whatsapp,
+.sc_socials.sc_socials_shape_round.sc_socials_type_icons a.social_whatsapp {
+    background: #00b489;
+    border-color: #00b489;
+    color: #ffffff;
+}
+.sc_socials.sc_socials_share .sc_socials_item a.social_whatsapp:hover,
+.sc_socials.sc_socials_shape_round.sc_socials_type_icons a.social_whatsapp:hover {
+    background: transparent;
+    border-color: #00b489;
+    color: #00b489;
+}
+
 .sc_socials.sc_socials_share .sc_socials_item a.social_facebook,
 .sc_socials.sc_socials_shape_round.sc_socials_type_icons a.social_facebook {
     background: #3b5998;

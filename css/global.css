@@ -8121,9 +8121,12 @@ blockquote,
 
 .scheme_dark .widget_area_inner ul li a,
 .scheme_dark .widget_area_inner a,
-.scheme_dark .widget_area_inner ul li:before,
 .scheme_dark .widget_area_inner ul li a:hover {
-  color: #84c54e
+  color: #8a8a8a
+}
+
+.scheme_dark .widget_area_inner ul li:before {
+  color: #b11616
 }
 
 .scheme_dark .widget_area_inner button:before {
@@ -8133,7 +8136,7 @@ blockquote,
 .scheme_dark .widget_area_inner ul li a:hover,
 .scheme_dark .widget_area_inner a:hover,
 .scheme_dark .widget_area_inner button:hover:before {
-  color: #ff7e27
+  color: #b11616
 }
 
 .scheme_dark .widget_area_inner .post_title a {
@@ -10269,18 +10272,18 @@ blockquote,
   background-color:#84c54e; border-color:#84c54e;
 }
 #sc_skills_diagram_2102404541 .sc_skills_column:nth-child(1) .sc_skills_total{bottom:85%}
-#sc_skills_diagram_2102404541 .sc_skills_column:nth-child(2) .sc_skills_total{bottom:75%}
+#sc_skills_diagram_2102404541 .sc_skills_column:nth-child(2) .sc_skills_total{bottom:92%}
 #sc_skills_diagram_2102404541 .sc_skills_column:nth-child(3) .sc_skills_total{bottom:80%}
 #sc_skills_diagram_2102404541 .sc_skills_column:nth-child(4) .sc_skills_total{bottom:73%}
-#sc_skills_diagram_2102404541 .sc_skills_column:nth-child(5) .sc_skills_total{bottom:92%}
+#sc_skills_diagram_2102404541 .sc_skills_column:nth-child(5) .sc_skills_total{bottom:70%}
 #sc_skills_diagram_734942409 .sc_skills_column .sc_skills_count{
   background-color:#84c54e; border-color:#84c54e;
 }
 #sc_skills_diagram_734942409 .sc_skills_column:nth-child(1) .sc_skills_total{bottom:85%}
-#sc_skills_diagram_734942409 .sc_skills_column:nth-child(2) .sc_skills_total{bottom:75%}
+#sc_skills_diagram_734942409 .sc_skills_column:nth-child(2) .sc_skills_total{bottom:92%}
 #sc_skills_diagram_734942409 .sc_skills_column:nth-child(3) .sc_skills_total{bottom:80%}
 #sc_skills_diagram_734942409 .sc_skills_column:nth-child(4) .sc_skills_total{bottom:73%}
-#sc_skills_diagram_734942409 .sc_skills_column:nth-child(5) .sc_skills_total{bottom:92%}
+#sc_skills_diagram_734942409 .sc_skills_column:nth-child(5) .sc_skills_total{bottom:70%}
 .block_1474540986884 {
   background-color: #f6f5f2 !important;
 }
@@ -10627,4 +10630,11 @@ body .columns_wrap {
 }
 body .mc4wp-form-fields input[type="submit"] {
   margin-left: 0.5em;
+}
+
+.footer-new-list_holder{
+  list-style-type:  none;
+  line-height: 1.8 !important; 
+  padding: 0 !important;
+  color: #000000;
 }
