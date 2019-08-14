@@ -541,16 +541,45 @@ function charity_is_hope_scroll_actions() {
 	var scroll_offset = jQuery(window).scrollTop();
 	var scroll_to_top_button = jQuery('.scroll_to_top');
 	var adminbar_height = Math.max(0, jQuery('#wpadminbar').height());
-
+	
 	if (CHARITY_IS_HOPE_STORAGE['top_panel_height'] < 1) {
 		CHARITY_IS_HOPE_STORAGE['top_panel_height'] = Math.max(0, jQuery('.top_panel_wrap').height());
 	}
 	
 	// Scroll to top button show/hide
 	if (scroll_offset > CHARITY_IS_HOPE_STORAGE['top_panel_height'])
-		scroll_to_top_button.addClass('show');
+		
+		scroll_to_top_button.addClass('show box bounce-5');
 	else
-		scroll_to_top_button.removeClass('show');
+		scroll_to_top_button.removeClass('show box bounce-5');
+
+	if( jQuery('#top_scroll').length > 0 ) {
+	
+		var $windowHeight, $pageHeight, $footerHeight, $scrollTop;
+		
+		function calcToTopColor(){
+			$scrollTop = jQuery(window).scrollTop();
+			$windowHeight = jQuery(window).height();
+			$pageHeight = jQuery('body').height();
+			
+			if( ($scrollTop + $windowHeight) >= ($pageHeight)){
+				jQuery('#top_scroll').css({"background-color": "#84c54e"});
+			}
+				
+			else {
+				jQuery('#top_scroll').css({"background-color": "#340bad"});
+			}
+		}
+		
+		//calc on scroll
+		jQuery(window).scroll(calcToTopColor);
+		
+		//calc on resize
+		jQuery(window).resize(calcToTopColor);
+
+	}
+
+
 	
 	// Fix/unfix top panel
 	if (!jQuery('body').hasClass('menu_mobile') && CHARITY_IS_HOPE_STORAGE['menu_fixed']) {
@@ -1063,6 +1092,7 @@ function charity_is_hope_resize_alter_portfolio() {
 function charity_is_hope_init_sfmenu(selector) {
 	jQuery(selector).show().each(function() {
 		if (charity_is_hope_is_responsive_need() && (jQuery(this).attr('id')=='menu_main' || jQuery(this).attr('id')=='menu_side')) return;
+		//document.write("hello")
 		jQuery(this).addClass('inited').superfish({
 			delay: 500,
 			animation: {
@@ -1098,6 +1128,7 @@ function charity_is_hope_init_sfmenu(selector) {
 				}
 			}
 		});
+		//document.write("hello")
 	});
 }
 

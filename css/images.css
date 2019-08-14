@@ -1,0 +1,54 @@
+@media only screen and (min-width: 1299px){
+    .galary {
+        width: 1298px;
+        height: 1076px;
+        text-align: center;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (min-width: 1943px){
+    .galary {
+        width: 1944px;
+        height: 746px;
+        text-align: center;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (min-width:200px) and (max-width: 430px){
+    .galary {
+        width: 430px;
+        height: auto;
+        text-align: center;
+        margin: 0 auto;
+    }
+    .galary img {
+        transition: 0.5s;
+        padding: 5px !important;
+        width: 150px !important;
+        height: 100px !important;
+        max-width: 100%;
+    }
+}
+
+.galary {
+    margin: 0 auto;
+    text-align: center;
+}
+.galary img {
+    transition: 0.5s;
+    padding: 7.5px;
+    width: 200px;
+    height: 150px;
+    max-width: 100%;
+}
+.galary img:hover {
+    filter: grayscale(100%);
+    transform: scale(1.1);
+}
+
+.galary h2 {
+    width: 100%;
+    text-align: center;
+}

@@ -8,8 +8,15 @@
 .post_info_donations .post_counters_label {
     font-size: 1em;
     font-weight: 700;
-    color: #333333;
+    color: #340bad;
 }
+
+.post_info_donations .post_counters_label_goal {
+    font-size: 1em;
+    font-weight: 700;
+    color: #ed0909;
+}
+
 .post_info_donations .post_goal_title,
 .post_info_donations .post_raised_title,
 .post_counters_number_raised,
@@ -19,6 +26,7 @@
 .post_counters_number_goal,
 .post_info_donations .post_goal {
     float: right !important;
+    color: #ed0909
 }
 .post_info_donations .top,
 .post_info_donations .middle {

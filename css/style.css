@@ -1702,6 +1702,10 @@ footer .content_wrap,
 	padding:0;
 }
 
+.page_content_wrap.page_paddings_yes_no {
+	padding: 0%;
+}
+
 .article_style_boxed .content > article > .post_content,
 /*.article_style_boxed[class*="single-"] .content > article,*/
 .article_style_boxed[class*="single-"] .content > .comments_wrap,
@@ -6217,10 +6221,10 @@ blockquote cite {
 }
 
 .footer-new-holder-right-holder__text {
-	font-size: 14px;
+	font-size: 15px;
 	color: #ff7e27;
 	font-family: 'H','Trebuchet MS',Helvetica;
-    font-weight: 300;
+    font-weight: 700;
     padding: 0;
     line-height: normal;
 }
@@ -6243,7 +6247,7 @@ footer.twitter_wrap .sc_section_overlay {
 
 /* Copyright area */
 .copyright_wrap_inner {
-	padding: 3.85em 0;
+	padding: 1em 0;
 	overflow:hidden;
 }
 .copyright_wrap {

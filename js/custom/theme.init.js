@@ -13,10 +13,9 @@ function charity_is_hope_theme_ready_actions() {
 
 // Theme-specific scroll actions
 //==============================================
+
 function charity_is_hope_theme_scroll_actions() {
 	"use strict";
-	// Put here your theme-specific code with scroll actions
-	// It will be called when page is scrolled (before core actions)
 }
 
 
