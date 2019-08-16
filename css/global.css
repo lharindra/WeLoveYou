@@ -10596,6 +10596,37 @@ blockquote,
   margin: 20px 0;
 }
 
+.reading_bible {
+  width: 70%;
+  height: 50%;
+  display: block;
+  text-align: center;
+  margin: 10px auto;
+}
+
+.top_panel_image_kits {
+  background-image: url(../images/main_kit.jpg)
+}
+
+.top_panel_image_kits {
+  height: 42em;
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.top_panel_image_education {
+  background-image: url(../images/education_to_child.jpg)
+}
+
+.top_panel_image_education {
+  height: 42em;
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+}
+
 .story_headline {
   text-align: center;
 }

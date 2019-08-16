@@ -354,3 +354,11 @@ var woocommerce_price_slider_params = {"currency_symbol":"$","currency_pos":"lef
 var tribe_js_config = {"permalink_settings":"\/%postname%\/","events_post_type":"tribe_events","events_base":"events.html"};
 /* ]]> */
 
+function incrementValue() {
+    var count = document.getElementById("increment_like").innerHTML;
+    //document.write(count)
+    count = isNaN(count) ? 0 : count;
+    count++;
+    document.getElementById('increment_like').innerHTML = count;
+}
+
