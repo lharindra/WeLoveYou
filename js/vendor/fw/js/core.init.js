@@ -545,7 +545,14 @@ function charity_is_hope_scroll_actions() {
 	if (CHARITY_IS_HOPE_STORAGE['top_panel_height'] < 1) {
 		CHARITY_IS_HOPE_STORAGE['top_panel_height'] = Math.max(0, jQuery('.top_panel_wrap').height());
 	}
-	
+	var $valuewidth = jQuery(window).width();
+	var para = document.getElementById("addbreak");
+	if ($valuewidth < 960){
+		jQuery("#addbreak").html('<b class="bigger_letter">C</b><b class="value_highlight">ommitment</b> leads to <b class="bigger_letter">A</b>ction. Action brings your <b class="bigger_letter">D</b>ream closer.<br /><br />');
+		//document.write("success")
+	} else {
+		jQuery("#addbreak").html('<b class="bigger_letter">C</b><b class="value_highlight">ommitment</b> leads to <b class="bigger_letter">A</b>ction. Action brings your <b class="bigger_letter">D</b>ream closer.');	
+	}
 	// Scroll to top button show/hide
 	if (scroll_offset > CHARITY_IS_HOPE_STORAGE['top_panel_height'])
 		
@@ -555,7 +562,7 @@ function charity_is_hope_scroll_actions() {
 
 	if( jQuery('#top_scroll').length > 0 ) {
 	
-		var $windowHeight, $pageHeight, $footerHeight, $scrollTop;
+		var $windowHeight, $pageHeight, $scrollTop;
 		
 		function calcToTopColor(){
 			$scrollTop = jQuery(window).scrollTop();
