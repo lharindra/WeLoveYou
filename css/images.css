@@ -1,7 +1,7 @@
 @media only screen and (min-width: 1299px){
     .galary {
         width: 1298px;
-        height: 1076px;
+        height: auto;
         text-align: center;
         margin: 0 auto;
     }
@@ -10,7 +10,7 @@
 @media only screen and (min-width: 1943px){
     .galary {
         width: 1944px;
-        height: 746px;
+        height: auto;
         text-align: center;
         margin: 0 auto;
     }

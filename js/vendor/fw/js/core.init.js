@@ -562,14 +562,16 @@ function charity_is_hope_scroll_actions() {
 
 	if( jQuery('#top_scroll').length > 0 ) {
 	
-		var $windowHeight, $pageHeight, $scrollTop;
+		var $windowHeight, $pageHeight, $scrollTop, $footer_height;
 		
 		function calcToTopColor(){
 			$scrollTop = jQuery(window).scrollTop();
 			$windowHeight = jQuery(window).height();
 			$pageHeight = jQuery('body').height();
+			//document.write($pageHeight)
+			$footer_height = jQuery('#footer_height').height();
 			
-			if( ($scrollTop + $windowHeight) >= ($pageHeight)){
+			if( ($scrollTop + $windowHeight) >= ($pageHeight - $footer_height)){
 				jQuery('#top_scroll').css({"background-color": "#84c54e"});
 			}
 				

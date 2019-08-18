@@ -1526,8 +1526,8 @@ Samsung Galaxy
     }
 
 	html, body { font-size: 13px; }
-    h1 { font-size:2.5em; }
-    h2 { font-size:1.8em; }
+    h1 { font-size:2.5em !important; }
+    h2 { font-size:2.5em; }
     h3 { font-size:1.6em; }
     h4 { font-size:1.15em; }
     h5 { font-size:1.1em; }
@@ -2193,7 +2193,7 @@ Samsung Galaxy
         margin-right: 1.5em;
     }
     .sc_item_descr {
-        font-size: 1.2em;
+        font-size: 1.6em;
     }
     .sc_call_to_action.sc_call_to_action_style_1 .sc_call_to_action_title {
         font-size: 4em;

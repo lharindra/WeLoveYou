@@ -8181,8 +8181,7 @@ blockquote,
 }
 
 .scheme_dark .footer_wrap_inner.widget_area_inner {
-  background-color: #7d7a7a
-  
+  background-color: #1c0561;
 }
 
 .scheme_dark .widget_area_inner ul li a,
@@ -8275,7 +8274,7 @@ blockquote,
 
 .scheme_dark .contacts_wrap_inner {
   color: #8a8a8a;
-  background-color: #7d7a7a
+  background-color: #1c0561;
 }
 
 .scheme_dark .testimonials_wrap_inner,
@@ -9954,8 +9953,8 @@ blockquote,
 }
 
 .scheme_dark .sc_socials.sc_socials_type_icons a:hover {
-  color: #84c54e;
-  border-color: #84c54e
+  color: #b11616;
+  border-color: #b11616
 }
 
 .scheme_dark .sc_socials.sc_socials_share.sc_socials_dir_vertical .sc_socials_item a {
@@ -10609,6 +10608,18 @@ blockquote,
 }
 
 .top_panel_image_kits {
+  height: 42em;
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.top_panel_image_save {
+  background-image: url(../images/slider_1_1.jpg) 
+}
+
+.top_panel_image_save {
   height: 42em;
   overflow: hidden;
   position: relative;
