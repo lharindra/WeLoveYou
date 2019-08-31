@@ -3338,6 +3338,30 @@ Very common low res
         -o-transition: all ease .3s;
         transition: all ease .3s;
     }
+    .top_panel_image_education {
+        height: 20em;
+        -webkit-transition: all ease .3s;
+        -moz-transition: all ease .3s;
+        -ms-transition: all ease .3s;
+        -o-transition: all ease .3s;
+        transition: all ease .3s;
+    }
+    .top_panel_image_entertainment {
+        height: 20em;
+        -webkit-transition: all ease .3s;
+        -moz-transition: all ease .3s;
+        -ms-transition: all ease .3s;
+        -o-transition: all ease .3s;
+        transition: all ease .3s;
+    }
+    .top_panel_image_save {
+        height: 20em;
+        -webkit-transition: all ease .3s;
+        -moz-transition: all ease .3s;
+        -ms-transition: all ease .3s;
+        -o-transition: all ease .3s;
+        transition: all ease .3s;
+    }
     .menu_mobile_open .top_panel_image {
         height: 0;
     }

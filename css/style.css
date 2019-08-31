@@ -1585,8 +1585,17 @@ fieldset legend {
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	flex-direction: column;
-
 }
+.footer-new-list h5{
+	color: #8a8a8a !important;
+	font-size: 1em;
+	margin-bottom: 1.5em;
+}
+.footer-new-list__holder li{
+	margin-bottom: 1em !important;
+	font-weight: bolder;
+}
+
 
 .footer-new-column-1_2 {
 	display: flex !important;
@@ -1806,7 +1815,7 @@ body:not(.top_panel_fixed) .top_panel_position_over .top_panel_bottom {
 .top_panel_wrap .contact_button,
 .top_panel_wrap .contact_socials {
     float: right;
-    margin: 1.65em 0;
+    margin: 3.4em 0;
     line-height: 0;
 }
 .top_panel_wrap .contact_socials .sc_socials {
@@ -2659,7 +2668,7 @@ body:not(.top_panel_fixed) .top_panel_position_over .top_panel_bottom {
     margin: 1.6em 0 1em 0.8em;
 }
 .top_panel_wrap .logo_main {
-	max-height:75px;
+	max-height:120px;
 	width:auto;
 }
 .logo a {
@@ -6180,7 +6189,7 @@ blockquote cite {
 
 /* Footer widgets */
 .footer_wrap_inner {
-	padding: 1em 0 1em;
+	padding: 5em 0 3em;
 }
 .footer_wrap aside {
 	margin-bottom:3.75em;
@@ -6201,7 +6210,7 @@ blockquote cite {
 	text-align:left;
 }
 .contacts_wrap .logo {
-	text-align:left;
+	text-align:center;
     margin-left: 0.2em;
 }
 .contacts_wrap .logo .logo_text {
@@ -6217,7 +6226,9 @@ blockquote cite {
     line-height: 1.75em;
 }
 .footer_wrap_inner.widget_area_inner .width_right > .columns_wrap {
-    width: 94%;
+	width: 94%;
+	text-align: center;
+	padding: 3em 0 0 0;
 }
 
 .footer-new-holder-right-holder__text {
