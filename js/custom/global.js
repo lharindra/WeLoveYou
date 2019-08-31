@@ -4,7 +4,7 @@ window._wpemojiSettings = {
 	"svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/2\/svg\/",
 	"svgExt": ".svg",
 	"source": {
-		"concatemoji": "http:\/\/weloveyou.themerex.net\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.6.2"
+		"concatemoji": "http:\/\/weloveyou.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.6.2"
 	}
 };
 ! function(a, b, c) {
@@ -61,7 +61,7 @@ var wc_add_to_cart_params = {
 	"ajax_url": "\/wp-admin\/admin-ajax.php",
 	"wc_ajax_url": "\/about-us-style-1\/?wc-ajax=%%endpoint%%",
 	"i18n_view_cart": "View Cart",
-	"cart_url": "http:\/\/weloveyou.themerex.net\/cart\/",
+	"cart_url": "http:\/\/weloveyou.com\/cart\/",
 	"is_cart": "",
 	"cart_redirect_after_add": "no"
 };
@@ -70,7 +70,7 @@ var wc_add_to_cart_params = {
 var tribe_js_config = {
 	"permalink_settings": "\/%postname%\/",
 	"events_post_type": "tribe_events",
-	"events_base": "http:\/\/weloveyou.themerex.net\/events\/"
+	"events_base": "http:\/\/weloveyou.com\/events\/"
 };
 /* ]]> */
 /* <![CDATA[ */
@@ -161,9 +161,9 @@ var weloveyou_STORAGE = {
 		"editor_caption_cancel": "Cancel",
 		"editor_caption_close": "Close"
 	},
-	"ajax_url": "http:\/\/weloveyou.themerex.net\/wp-admin\/admin-ajax.php",
+	"ajax_url": "http:\/\/weloveyou.com\/wp-admin\/admin-ajax.php",
 	"ajax_nonce": "c40826179b",
-	"site_url": "http:\/\/weloveyou.themerex.net",
+	"site_url": "http:\/\/weloveyou.com",
 	"site_protocol": "http",
 	"vc_edit_mode": "",
 	"accent1_color": "#84c54e",
@@ -214,9 +214,9 @@ var wc_cart_fragments_params = {
 	/* ]]> */
 /* <![CDATA[ */
 var TRX_UTILS_STORAGE = {
-	"ajax_url": "http:\/\/weloveyou.themerex.net\/wp-admin\/admin-ajax.php",
+	"ajax_url": "http:\/\/weloveyou.com\/wp-admin\/admin-ajax.php",
 	"ajax_nonce": "c40826179b",
-	"site_url": "http:\/\/weloveyou.themerex.net",
+	"site_url": "http:\/\/weloveyou.com",
 	"user_logged_in": "0",
 	"email_mask": "^([a-zA-Z0-9_\\-]+\\.)*[a-zA-Z0-9_\\-]+@[a-z0-9_\\-]+(\\.[a-z0-9_\\-]+)*\\.[a-z]{2,6}$",
 	"msg_ajax_error": "Invalid server answer!",
