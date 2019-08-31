@@ -28,7 +28,7 @@ function eggbfc(winw, resultoption) {
 			amount: 3
 		}, {
 			width: 480,
-			amount: 1
+			amount: 3
 		}];
 	if (responsiveEntries != undefined && responsiveEntries.length > 0)
 		jQuery.each(responsiveEntries, function(index, obj) {
@@ -85,7 +85,7 @@ jQuery(document).ready(function() {
 		layout: "cobbles",
 		forceFullWidth: "off",
 		lazyLoad: "off",
-		row: 3,
+		row: 4,
 		loadMoreAjaxToken: "ec2718512a",
 		loadMoreAjaxUrl: "#",
 		loadMoreAjaxAction: "Essential_Grid_Front_request_ajax",
@@ -111,7 +111,7 @@ jQuery(document).ready(function() {
 		showDropFilter: "hover",
 		filterGroupClass: "esg-fgc-2",
 		googleFonts: ['Open+Sans:300,400,600,700,800', 'Raleway:100,200,300,400,500,600,700,800,900', 'Droid+Serif:400,700'],
-		aspectratio: "4:3",
+		aspectratio: "5:3",
 		responsiveEntries: [{
 			width: 1400,
 			amount: 3
@@ -132,7 +132,7 @@ jQuery(document).ready(function() {
 			amount: 3
 		}, {
 			width: 480,
-			amount: 1
+			amount: 2
 		}]
 	});
 
