@@ -1,10 +1,10 @@
 /* global jQuery:false */
-/* global CHARITY_IS_HOPE_STORAGE:false */
+/* global weloveyou_STORAGE:false */
 
 
 // Theme-specific first load actions
 //==============================================
-function charity_is_hope_theme_ready_actions() {
+function weloveyou_theme_ready_actions() {
 	"use strict";
 	// Put here your init code with theme-specific actions
 	// It will be called before core actions
@@ -14,14 +14,14 @@ function charity_is_hope_theme_ready_actions() {
 // Theme-specific scroll actions
 //==============================================
 
-function charity_is_hope_theme_scroll_actions() {
+function weloveyou_theme_scroll_actions() {
 	"use strict";
 }
 
 
 // Theme-specific resize actions
 //==============================================
-function charity_is_hope_theme_resize_actions() {
+function weloveyou_theme_resize_actions() {
 	"use strict";
 	// Put here your theme-specific code with resize actions
 	// It will be called when window is resized (before core actions)
@@ -30,7 +30,7 @@ function charity_is_hope_theme_resize_actions() {
 
 // Theme-specific shortcodes init
 //=====================================================
-function charity_is_hope_theme_sc_init(cont) {
+function weloveyou_theme_sc_init(cont) {
 	"use strict";
 	// Put here your theme-specific code to init shortcodes
 	// It will be called before core init shortcodes
@@ -40,7 +40,7 @@ function charity_is_hope_theme_sc_init(cont) {
 
 // Theme-specific post-formats init
 //=====================================================
-function charity_is_hope_theme_init_post_formats() {
+function weloveyou_theme_init_post_formats() {
 	"use strict";
 	// Put here your theme-specific code to init post-formats
 	// It will be called before core init post_formats when page is loaded or after 'Load more' or 'Infinite scroll' actions
@@ -50,25 +50,25 @@ function charity_is_hope_theme_init_post_formats() {
 		.addClass('sc_button sc_button_style_filled');
 
 	// All other buttons decoration (add 'hover' class)
-	if (CHARITY_IS_HOPE_STORAGE['button_hover'] && CHARITY_IS_HOPE_STORAGE['button_hover']!='default') {
+	if (weloveyou_STORAGE['button_hover'] && weloveyou_STORAGE['button_hover']!='default') {
 		jQuery('button:not(.search_submit):not([class*="sc_button_hover_"]),\
 				.sc_button:not(.sc_button_style_border):not([class*="sc_button_hover_"]),\
 				.woocommerce .button:not([class*="sc_button_hover_"]),.woocommerce-page .button:not([class*="sc_button_hover_"]),\
 				#buddypress a.button:not([class*="sc_button_hover_"])'
-				).addClass('sc_button_hover_'+CHARITY_IS_HOPE_STORAGE['button_hover']);
-		if (CHARITY_IS_HOPE_STORAGE['button_hover']!='arrow')
+				).addClass('sc_button_hover_'+weloveyou_STORAGE['button_hover']);
+		if (weloveyou_STORAGE['button_hover']!='arrow')
 			jQuery('input[type="submit"]:not([class*="sc_button_hover_"]),\
 					input[type="button"]:not([class*="sc_button_hover_"]),\
 					.isotope_filters_button,\
 					.scroll_to_top:not([class*="sc_button_hover_"]),\
 					.sc_slider_prev:not([class*="sc_button_hover_"]),.sc_slider_next:not([class*="sc_button_hover_"]),\
 					.tagcloud > a:not([class*="sc_button_hover_"])'
-					).addClass('sc_button_hover_'+CHARITY_IS_HOPE_STORAGE['button_hover']);
+					).addClass('sc_button_hover_'+weloveyou_STORAGE['button_hover']);
 	}
 
 	// All text fields decoration (except Calculated Fields Forms)
-	//if (CHARITY_IS_HOPE_STORAGE['input_hover'])
-	//	jQuery('form:not([class*="cp_cff_"]):not([class*="sc_input_hover_"])').addClass('sc_input_hover_'+CHARITY_IS_HOPE_STORAGE['input_hover']);
+	//if (weloveyou_STORAGE['input_hover'])
+	//	jQuery('form:not([class*="cp_cff_"]):not([class*="sc_input_hover_"])').addClass('sc_input_hover_'+weloveyou_STORAGE['input_hover']);
 
 	// Mark field as 'filled' on keypress
 	jQuery('[class*="sc_input_hover_"] input, [class*="sc_input_hover_"] textarea').each(function() {
@@ -88,7 +88,7 @@ function charity_is_hope_theme_init_post_formats() {
 
 // Theme-specific GoogleMap styles
 //=====================================================
-function charity_is_hope_theme_googlemap_styles($styles) {
+function weloveyou_theme_googlemap_styles($styles) {
 	"use strict";
 	// Put here your theme-specific code to add GoogleMap styles
 	// It will be called before GoogleMap init when page is loaded

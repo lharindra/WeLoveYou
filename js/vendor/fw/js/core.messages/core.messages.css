@@ -1,5 +1,5 @@
 /* Popups with messages */
-#charity_is_hope_modal_bg {
+#weloveyou_modal_bg {
 	position:fixed;
 	left:0;
 	top:0;
@@ -9,7 +9,7 @@
 	display:none;
 	z-index:100000;
 }
-.charity_is_hope_message {
+.weloveyou_message {
 	display:block;
 	position:absolute;
 	max-width:800px;
@@ -27,7 +27,7 @@
 	line-height:1.4em;
 	z-index:100001
 }
-.charity_is_hope_message .charity_is_hope_message_close {
+.weloveyou_message .weloveyou_message_close {
 	display:block;
 	position:absolute;
 	width:16px;
@@ -41,7 +41,7 @@
 	cursor:pointer;
 	color:#4c4c4c;
 }
-.charity_is_hope_message .charity_is_hope_message_icon {
+.weloveyou_message .weloveyou_message_icon {
 	float:left;
 	display:block;
 	width:35px;
@@ -55,11 +55,11 @@
 	font-weight:bold;
 	color:#c9c9c9;
 }
-.charity_is_hope_message .charity_is_hope_message_icon:before {
+.weloveyou_message .weloveyou_message_icon:before {
 	padding:0;
 	margin:0;
 }
-.charity_is_hope_message .charity_is_hope_message_header {
+.weloveyou_message .weloveyou_message_header {
 	color:#4c4c4c;
 	padding: 0 3em 0 0;
 	font-size:1.3em;
@@ -67,75 +67,75 @@
 	font-weight:bold;
 	margin-top: 0.5em;
 }
-.charity_is_hope_message:not(.charity_is_hope_message_dialog) .charity_is_hope_message_body {
+.weloveyou_message:not(.weloveyou_message_dialog) .weloveyou_message_body {
 	padding:0 0 0 63px;
 }
 
 /* Warning popup */
-.charity_is_hope_message_warning {
+.weloveyou_message_warning {
 	border-color:#d7a9b1;
 	background-color:#ffcdde;
 	color:#a63a4b;
 }
-.charity_is_hope_message_warning .charity_is_hope_message_close {
+.weloveyou_message_warning .weloveyou_message_close {
 	color:#a63a4b;
 }
-.charity_is_hope_message_warning .charity_is_hope_message_icon {
+.weloveyou_message_warning .weloveyou_message_icon {
 	border-color: #a63a4b;
 	color:#a63a4b;
 }
-.charity_is_hope_message_warning .charity_is_hope_message_icon {
+.weloveyou_message_warning .weloveyou_message_icon {
 	line-height:34px;
 }
-.charity_is_hope_message_warning .charity_is_hope_message_header {
+.weloveyou_message_warning .weloveyou_message_header {
 	color:#a63a4b;
 }
 /* Success popup */
-.charity_is_hope_message_success {
+.weloveyou_message_success {
 	border-color:#b3e7a8;
 	background-color:#d8ffd0;
 	color:#517d48;
 }
-.charity_is_hope_message_success .charity_is_hope_message_close {
+.weloveyou_message_success .weloveyou_message_close {
 	color:#517d48;
 }
-.charity_is_hope_message_success .charity_is_hope_message_icon {
+.weloveyou_message_success .weloveyou_message_icon {
 	border-color: #517d48;
 	color:#517d48;
 }
-.charity_is_hope_message_success .charity_is_hope_message_icon {
+.weloveyou_message_success .weloveyou_message_icon {
 	line-height:34px;
 }
-.charity_is_hope_message_success .charity_is_hope_message_header {
+.weloveyou_message_success .weloveyou_message_header {
 	color:#517d48;
 }
 /* Info popup */
-.charity_is_hope_message_info {
+.weloveyou_message_info {
 	border-color:#9ecade;
 	background-color:#ebf7fe;
 	color:#4cb2e1;
 }
-.charity_is_hope_message_info .charity_is_hope_message_close {
+.weloveyou_message_info .weloveyou_message_close {
 	color:#4cb2e1;
 }
-.charity_is_hope_message_info .charity_is_hope_message_icon {
+.weloveyou_message_info .weloveyou_message_icon {
 	border-color: #4cb2e1;
 	color:#4cb2e1;
 }
-.charity_is_hope_message_info .charity_is_hope_message_icon {
+.weloveyou_message_info .weloveyou_message_icon {
 	line-height:34px;
 }
-.charity_is_hope_message_info .charity_is_hope_message_header {
+.weloveyou_message_info .weloveyou_message_header {
 	color:#4cb2e1;
 }
 /* Dialog popup */
-.charity_is_hope_message_dialog .charity_is_hope_message_icon {
+.weloveyou_message_dialog .weloveyou_message_icon {
 	line-height:36px;
 }
-.charity_is_hope_message_dialog .charity_is_hope_message_buttons {
+.weloveyou_message_dialog .weloveyou_message_buttons {
 	margin-top:20px;
 }
-.charity_is_hope_message_dialog .charity_is_hope_message_button {
+.weloveyou_message_dialog .weloveyou_message_button {
 	display:inline-block;
 	padding:0 12px;
 	margin-right:6px;
@@ -149,6 +149,6 @@
 	text-align:center;
 	font-weight:bold;
 }
-.charity_is_hope_message_dialog .charity_is_hope_message_button:hover {
+.weloveyou_message_dialog .weloveyou_message_button:hover {
 	background-color:#4cb2e1;
 }

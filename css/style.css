@@ -1,15 +1,15 @@
 @charset 'utf-8';
 /*
-Theme Name: Charity Is Hope
-Theme URI: http://charity-is-hope.themerex.net/
-Description: Charity Is Hope - Multipurpose and Multiskin Responsive Wordpress theme
-Author: charity-is-hope
+Theme Name: weloveyou
+Theme URI: http://weloveyou.themerex.net/
+Description: weloveyou - Multipurpose and Multiskin Responsive Wordpress theme
+Author: weloveyou
 Author URI: http://themerex.net/
 Version: 1.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column,two-columns,three-columns,four-columns,left-sidebar,right-sidebar,flexible-header,buddypress,custom-background,custom-colors,custom-header,custom-menu,editor-style,featured-image-header,featured-images,front-page-post-form,full-width-template,microformats,post-formats,sticky-post,theme-options,threaded-comments,translation-ready,holiday
-Text Domain: charity-is-hope
+Text Domain: weloveyou
 */
 
 
@@ -6130,7 +6130,7 @@ blockquote cite {
 .widget_area .widget_product_tag_cloud a:hover,
 .widget_area .widget_tag_cloud a:hover {}
 
-/* Widget: Charity Is Hope Banner */
+/* Widget: weloveyou Banner */
 .widget_area .widget_banner .image_wrap {
 	overflow:hidden;
 	display:block;
@@ -6138,7 +6138,7 @@ blockquote cite {
 }
 
 
-/* Widget: Charity Is Hope Flickr */
+/* Widget: weloveyou Flickr */
 .widget_area .widget_flickr {
 	overflow:hidden;
 }
@@ -6160,7 +6160,7 @@ blockquote cite {
 }
 
 
-/* Widget: Charity Is Hope Logo and Socials */
+/* Widget: weloveyou Logo and Socials */
 .widget_area .widget_socials .sc_socials {
 	margin-top:0;
 }
@@ -6168,7 +6168,7 @@ blockquote cite {
     margin-bottom:1em;
 }
 
-/* Widget: Charity Is Hope Twitter */
+/* Widget: weloveyou Twitter */
 .widget_area .widget_twitter ul li {
 	padding-left:1.5em;
 }

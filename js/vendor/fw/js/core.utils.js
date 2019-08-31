@@ -1,8 +1,8 @@
 /**
- * Charity Is Hope Framework: Utilities
+ * WeLoveYou Framework: Utilities
  *
- * @package	charity_is_hope
- * @since	charity_is_hope 1.0
+ * @package	weloveyou
+ * @since	weloveyou 1.0
  */
 
 
@@ -10,85 +10,85 @@
 ---------------------------------------------------------------- */
 
 // Global variables storage
-if (typeof CHARITY_IS_HOPE_STORAGE == 'undefined') var CHARITY_IS_HOPE_STORAGE = {};
+if (typeof weloveyou_STORAGE == 'undefined') var weloveyou_STORAGE = {};
 
 // Get global variable
-function charity_is_hope_storage_get(var_name) {
-	return charity_is_hope_isset(CHARITY_IS_HOPE_STORAGE[var_name]) ? CHARITY_IS_HOPE_STORAGE[var_name] : '';
+function weloveyou_storage_get(var_name) {
+	return weloveyou_isset(weloveyou_STORAGE[var_name]) ? weloveyou_STORAGE[var_name] : '';
 }
 
 // Set global variable
-function charity_is_hope_storage_set(var_name, value) {
-	CHARITY_IS_HOPE_STORAGE[var_name] = value;
+function weloveyou_storage_set(var_name, value) {
+	weloveyou_STORAGE[var_name] = value;
 }
 
 // Inc/Dec global variable with specified value
-function charity_is_hope_storage_inc(var_name) {
+function weloveyou_storage_inc(var_name) {
 	var value = arguments[1]==undefined ? 1 : arguments[1];
-	CHARITY_IS_HOPE_STORAGE[var_name] += value;
+	weloveyou_STORAGE[var_name] += value;
 }
 
 // Concatenate global variable with specified value
-function charity_is_hope_storage_concat(var_name, value) {
-	CHARITY_IS_HOPE_STORAGE[var_name] += ''+value;
+function weloveyou_storage_concat(var_name, value) {
+	weloveyou_STORAGE[var_name] += ''+value;
 }
 
 // Get global array element
-function charity_is_hope_storage_get_array(var_name, key) {
-	return charity_is_hope_isset(CHARITY_IS_HOPE_STORAGE[var_name][key]) ? CHARITY_IS_HOPE_STORAGE[var_name][key] : '';
+function weloveyou_storage_get_array(var_name, key) {
+	return weloveyou_isset(weloveyou_STORAGE[var_name][key]) ? weloveyou_STORAGE[var_name][key] : '';
 }
 
 // Set global array element
-function charity_is_hope_storage_set_array(var_name, key, value) {
-	if (!charity_is_hope_isset(CHARITY_IS_HOPE_STORAGE[var_name])) CHARITY_IS_HOPE_STORAGE[var_name] = {};
-	CHARITY_IS_HOPE_STORAGE[var_name][key] = value;
+function weloveyou_storage_set_array(var_name, key, value) {
+	if (!weloveyou_isset(weloveyou_STORAGE[var_name])) weloveyou_STORAGE[var_name] = {};
+	weloveyou_STORAGE[var_name][key] = value;
 }
 
 // Inc/Dec global array element with specified value
-function charity_is_hope_storage_inc_array(var_name, key) {
+function weloveyou_storage_inc_array(var_name, key) {
 	var value = arguments[2]==undefined ? 1 : arguments[2];
-	CHARITY_IS_HOPE_STORAGE[var_name][key] += value;
+	weloveyou_STORAGE[var_name][key] += value;
 }
 
 // Concatenate global array element with specified value
-function charity_is_hope_storage_concat_array(var_name, key, value) {
-	CHARITY_IS_HOPE_STORAGE[var_name][key] += ''+value;
+function weloveyou_storage_concat_array(var_name, key, value) {
+	weloveyou_STORAGE[var_name][key] += ''+value;
 }
 
 
 
 /* PHP-style functions
 ---------------------------------------------------------------- */
-function charity_is_hope_isset(obj) {
+function weloveyou_isset(obj) {
 	return typeof(obj) != 'undefined';
 }
 
-function charity_is_hope_empty(obj) {
-	return typeof(obj) == 'undefined' || (typeof(obj)=='object' && obj == null) || (typeof(obj)=='array' && obj.length == 0) || (typeof(obj)=='string' && charity_is_hope_alltrim(obj)=='') || obj===0;
+function weloveyou_empty(obj) {
+	return typeof(obj) == 'undefined' || (typeof(obj)=='object' && obj == null) || (typeof(obj)=='array' && obj.length == 0) || (typeof(obj)=='string' && weloveyou_alltrim(obj)=='') || obj===0;
 }
 
-function charity_is_hope_is_array(obj)  {
+function weloveyou_is_array(obj)  {
 	"use strict";
 	return typeof(obj)=='array';
 }
 
-function charity_is_hope_is_object(obj)  {
+function weloveyou_is_object(obj)  {
 	"use strict";
 	return typeof(obj)=='object';
 }
 
-function charity_is_hope_clone_object(obj) {
+function weloveyou_clone_object(obj) {
 	if (obj == null || typeof(obj) != 'object') {
 		return obj;
 	}
 	var temp = {};
 	for (var key in obj) {
-		temp[key] = charity_is_hope_clone_object(obj[key]);
+		temp[key] = weloveyou_clone_object(obj[key]);
 	}
 	return temp;
 }
 
-function charity_is_hope_merge_objects(obj1, obj2)  {
+function weloveyou_merge_objects(obj1, obj2)  {
 	"use strict";
 	for (var i in obj2)
 		if ( obj2.hasOwnProperty( i ) )
@@ -97,7 +97,7 @@ function charity_is_hope_merge_objects(obj1, obj2)  {
 }
 
 // Generates a storable representation of a value
-function charity_is_hope_serialize(mixed_val) {
+function weloveyou_serialize(mixed_val) {
 	"use strict";
 	var obj_to_array = arguments.length==1 || argument[1]===true;
 
@@ -123,20 +123,20 @@ function charity_is_hope_serialize(mixed_val) {
 				var map = [];
 				for (var i=0; i<mixed_val.length; i++) {
 					idxobj.idx++;
-					var ser = charity_is_hope_serialize(mixed_val[i]);
+					var ser = weloveyou_serialize(mixed_val[i]);
 					if (ser)
-						map.push(charity_is_hope_serialize(idxobj.idx) + ser);
+						map.push(weloveyou_serialize(idxobj.idx) + ser);
 				}                                      
 				return "a:" + mixed_val.length + ":{" + map.join("") + "}";
 			} else {
-				var class_name = charity_is_hope_get_class(mixed_val);
+				var class_name = weloveyou_get_class(mixed_val);
 				if (class_name == undefined)
 					return false;
 				var props = new Array();
 				for (var prop in mixed_val) {
-					var ser = charity_is_hope_serialize(mixed_val[prop]);
+					var ser = weloveyou_serialize(mixed_val[prop]);
 					if (ser)
-						props.push(charity_is_hope_serialize(prop) + ser);
+						props.push(weloveyou_serialize(prop) + ser);
 				}
 				if (obj_to_array)
 					return "a:" + props.length + ":{" + props.join("") + "}";
@@ -151,7 +151,7 @@ function charity_is_hope_serialize(mixed_val) {
 }
 
 // Returns the name of the class of an object
-function charity_is_hope_get_class(obj) {
+function weloveyou_get_class(obj) {
 	"use strict";
 	if (obj instanceof Object && !(obj instanceof Array) && !(obj instanceof Function) && obj.constructor) {
 		var arr = obj.constructor.toString().match(/function\s*(\w+)/);
@@ -165,7 +165,7 @@ function charity_is_hope_get_class(obj) {
 /* String functions
 ---------------------------------------------------------------- */
 
-function charity_is_hope_in_list(str, list) {
+function weloveyou_in_list(str, list) {
 	"use strict";
 	var delim = arguments[2] ? arguments[2] : '|';
 	var icase = arguments[3] ? arguments[3] : true;
@@ -184,7 +184,7 @@ function charity_is_hope_in_list(str, list) {
 	return retval;
 }
 
-function charity_is_hope_alltrim(str) {
+function weloveyou_alltrim(str) {
 	"use strict";
 	var dir = arguments[1] ? arguments[1] : 'a';
 	var rez = '';
@@ -208,17 +208,17 @@ function charity_is_hope_alltrim(str) {
 	return str.substring(start, end+1);
 }
 
-function charity_is_hope_ltrim(str) {
+function weloveyou_ltrim(str) {
 	"use strict";
-	return charity_is_hope_alltrim(str, 'l');
+	return weloveyou_alltrim(str, 'l');
 }
 
-function charity_is_hope_rtrim(str) {
+function weloveyou_rtrim(str) {
 	"use strict";
-	return charity_is_hope_alltrim(str, 'r');
+	return weloveyou_alltrim(str, 'r');
 }
 
-function charity_is_hope_padl(str, len) {
+function weloveyou_padl(str, len) {
 	"use strict";
 	var ch = arguments[2] ? arguments[2] : ' ';
 	var rez = str.substr(0,len);
@@ -229,7 +229,7 @@ function charity_is_hope_padl(str, len) {
 	return rez;
 }
 
-function charity_is_hope_padr(str, len) {
+function weloveyou_padr(str, len) {
 	"use strict";
 	var ch = arguments[2] ? arguments[2] : ' ';
 	var rez = str.substr(0,len);
@@ -240,7 +240,7 @@ function charity_is_hope_padr(str, len) {
 	return rez;
 }
 
-function charity_is_hope_padc(str, len) {
+function weloveyou_padc(str, len) {
 	"use strict";
 	var ch = arguments[2] ? arguments[2] : ' ';
 	var rez = str.substr(0,len);
@@ -251,7 +251,7 @@ function charity_is_hope_padc(str, len) {
 	return rez+(rez.length<len ? ch : '');
 }
 
-function charity_is_hope_replicate(str, num) {
+function weloveyou_replicate(str, num) {
 	"use strict";
 	var rez = '';
 	for (var i=0; i<num; i++) {
@@ -268,7 +268,7 @@ function charity_is_hope_replicate(str, num) {
 // Round number to specified precision. 
 // For example: num=1.12345, prec=2,  rounded=1.12
 //              num=12345,   prec=-2, rounded=12300
-function charity_is_hope_round_number(num) {
+function weloveyou_round_number(num) {
 	"use strict";
 	var precision = arguments[1] ? arguments[1] : 0;
 	var p = Math.pow(10, precision);
@@ -277,7 +277,7 @@ function charity_is_hope_round_number(num) {
 
 // Clear number from any characters and append it with 0 to desired precision
 // For example: num=test1.12dd, prec=3, cleared=1.120
-function charity_is_hope_clear_number(num) {
+function weloveyou_clear_number(num) {
 	"use strict";
 	var precision = arguments[1] ? arguments[1] : 0;
 	var defa = arguments[2] ? arguments[2] : 0;
@@ -310,13 +310,13 @@ function charity_is_hope_clear_number(num) {
 }
 
 // Convert number from decimal to hex
-function charity_is_hope_dec2hex(n) { 
+function weloveyou_dec2hex(n) { 
 	"use strict";
 	return Number(n).toString(16);
 }
 
 // Convert number from hex to decimal
-function charity_is_hope_hex2dec(hex) {
+function weloveyou_hex2dec(hex) {
 	"use strict";
 	return parseInt(hex,16); 
 }
@@ -326,7 +326,7 @@ function charity_is_hope_hex2dec(hex) {
 /* Array manipulations
 ---------------------------------------------------------------- */
 
-function charity_is_hope_in_array(val, thearray)  {
+function weloveyou_in_array(val, thearray)  {
 	"use strict";
 	var rez = false;
 	for (var i=0; i<thearray.length-1; i++)  {
@@ -338,7 +338,7 @@ function charity_is_hope_in_array(val, thearray)  {
 	return rez;
 }
 
-function charity_is_hope_sort_array(thearray)  {
+function weloveyou_sort_array(thearray)  {
 	"use strict";
 	var caseSensitive = arguments[1] ? arguments[1] : false;
 	for (var x=0; x<thearray.length-1; x++)  {
@@ -368,7 +368,7 @@ function charity_is_hope_sort_array(thearray)  {
 
 // Return array[Year, Month, Day, Hours, Minutes, Seconds]
 // from string: Year[-/.]Month[-/.]Day[T ]Hours:Minutes:Seconds
-function charity_is_hope_parse_date(dt) {
+function weloveyou_parse_date(dt) {
 	"use strict";
 	dt = dt.replace(/\//g, '-').replace(/\./g, '-').replace(/T/g, ' ').split('+')[0];
 	var dt2 = dt.split(' ');
@@ -379,18 +379,18 @@ function charity_is_hope_parse_date(dt) {
 }
 
 // Return difference string between two dates
-function charity_is_hope_get_date_difference(dt1) {
+function weloveyou_get_date_difference(dt1) {
 	"use strict";
 	var dt2 = arguments[1]!==undefined ? arguments[1] : '';
 	var short_date = arguments[2]!==undefined ? arguments[2] : true;
 	var sec = arguments[3]!==undefined ? arguments[3] : false;
-	var a1 = charity_is_hope_parse_date(dt1);
+	var a1 = weloveyou_parse_date(dt1);
 	dt1 = Date.UTC(a1[0], a1[1], a1[2], a1[3], a1[4], a1[5]);
 	if (dt2 == '') {
 		dt2 = new Date();
 		var a2 = [dt2.getFullYear(), dt2.getMonth()+1, dt2.getDate(), dt2.getHours(), dt2.getMinutes(), dt2.getSeconds()];
 	} else
-		var a2 = charity_is_hope_parse_date(dt2);
+		var a2 = weloveyou_parse_date(dt2);
 	dt2 = Date.UTC(a2[0], a2[1], a2[2], a2[3], a2[4], a2[5]);
 	var diff = Math.round((dt2 - dt1)/1000);
 	var days = Math.floor(diff / (24*3600));
@@ -416,12 +416,12 @@ function charity_is_hope_get_date_difference(dt1) {
 /* Colors functions
 ---------------------------------------------------------------- */
 
-function charity_is_hope_hex2rgb(hex) {
+function weloveyou_hex2rgb(hex) {
 	hex = parseInt(((hex.indexOf('#') > -1) ? hex.substring(1) : hex), 16);
 	return {r: hex >> 16, g: (hex & 0x00FF00) >> 8, b: (hex & 0x0000FF)};
 }
 
-function charity_is_hope_rgb2hex(color) {
+function weloveyou_rgb2hex(color) {
 	"use strict";
 	var aRGB;
 	color = color.replace(/\s/g,"").toLowerCase();
@@ -441,7 +441,7 @@ function charity_is_hope_rgb2hex(color) {
 	return (color.substr(0,1)!='#' ? '#' : '') + color;
 }
 
-function charity_is_hope_components2hex(r,g,b) {
+function weloveyou_components2hex(r,g,b) {
 	"use strict";
 	return '#'+
 		Number(r).toString(16).toUpperCase().replace(/^(.)$/,'0$1') +
@@ -449,9 +449,9 @@ function charity_is_hope_components2hex(r,g,b) {
 		Number(b).toString(16).toUpperCase().replace(/^(.)$/,'0$1');
 }
 
-function charity_is_hope_rgb2components(color) {
+function weloveyou_rgb2components(color) {
 	"use strict";
-	color = charity_is_hope_rgb2hex(color);
+	color = weloveyou_rgb2hex(color);
 	var matches = color.match(/^#?([\dabcdef]{2})([\dabcdef]{2})([\dabcdef]{2})$/i);
 	if (!matches) return false;
 	for (var i=1, rgb = new Array(3); i<=3; i++)
@@ -459,17 +459,17 @@ function charity_is_hope_rgb2components(color) {
 	return rgb;
 }
 
-function charity_is_hope_hex2hsb(hex) {
+function weloveyou_hex2hsb(hex) {
 	"use strict";
-	return charity_is_hope_rgb2hsb(charity_is_hope_hex2rgb(hex));
+	return weloveyou_rgb2hsb(weloveyou_hex2rgb(hex));
 }
 
-function charity_is_hope_hsb2hex(hsb) {
-	var rgb = charity_is_hope_hsb2rgb(hsb);
-	return charity_is_hope_components2hex(rgb.r, rgb.g, rgb.b);
+function weloveyou_hsb2hex(hsb) {
+	var rgb = weloveyou_hsb2rgb(hsb);
+	return weloveyou_components2hex(rgb.r, rgb.g, rgb.b);
 }
 
-function charity_is_hope_rgb2hsb(rgb) {
+function weloveyou_rgb2hsb(rgb) {
 	"use strict";
 	var hsb = {};
 	hsb.b = Math.max(Math.max(rgb.r,rgb.g),rgb.b);
@@ -487,7 +487,7 @@ function charity_is_hope_rgb2hsb(rgb) {
 	return hsb;
 }
 
-function charity_is_hope_hsb2rgb(hsb) {
+function weloveyou_hsb2rgb(hsb) {
 	var rgb = {};
 	var h = Math.round(hsb.h);
 	var s = Math.round(hsb.s*255/100);
@@ -510,7 +510,7 @@ function charity_is_hope_hsb2rgb(hsb) {
 	return { r:Math.round(rgb.r), g:Math.round(rgb.g), b:Math.round(rgb.b) };
 }
 
-function charity_is_hope_color_picker(){
+function weloveyou_color_picker(){
 	"use strict";
 	var id = arguments[0] ? arguments[0] : "iColorPicker"+Math.round(Math.random()*1000);
 	var colors = arguments[1] ? arguments[1] : 
@@ -546,7 +546,7 @@ function charity_is_hope_color_picker(){
 		.addClass("iColorPickerTable")
 		.on('mouseover', 'thead td', function(){
 			"use strict";
-			var aaa = charity_is_hope_rgb2hex(jQuery(this).css('background-color'));
+			var aaa = weloveyou_rgb2hex(jQuery(this).css('background-color'));
 			jQuery('#'+id+'_colorPreview').css('background',aaa);
 			jQuery('#'+id+'_colorPreview input').val(aaa);
 		})
@@ -580,7 +580,7 @@ function charity_is_hope_color_picker(){
 			"use strict";
 			var fld  = jQuery('#'+id).data('field');
 			var func = jQuery('#'+id).data('func');
-			var aaa  = charity_is_hope_rgb2hex(jQuery(this).css('background-color'));
+			var aaa  = weloveyou_rgb2hex(jQuery(this).css('background-color'));
 			if (func!=null && func!='undefined') {
 				func(fld, aaa);
 			} else {
@@ -608,7 +608,7 @@ function charity_is_hope_color_picker(){
 				while (rgb[0]<0xF || rgb[1]<0xF || rgb[2]<0xF) {
 					if (i%18==0) out += (i>0 ? '</tr>' : '') + '<tr>';
 					i++;
-					out += '<td style="background-color:'+charity_is_hope_components2hex(rgb[0]*16+rgb[0],rgb[1]*16+rgb[1],rgb[2]*16+rgb[2])+'">&nbsp;</td>';
+					out += '<td style="background-color:'+weloveyou_components2hex(rgb[0]*16+rgb[0],rgb[1]*16+rgb[1],rgb[2]*16+rgb[2])+'">&nbsp;</td>';
 					rgb[2]+=3;
 					if (rgb[2]>0xF) {
 						rgb[1]+=3;
@@ -678,7 +678,7 @@ function charity_is_hope_color_picker(){
 	return id;
 }
 
-function charity_is_hope_color_picker_show(id, fld, func) { 
+function weloveyou_color_picker_show(id, fld, func) { 
 	"use strict";
 	if (id===null || id==='') {
 		id = jQuery('.iColorPickerTable').attr('id');
@@ -707,7 +707,7 @@ function charity_is_hope_color_picker_show(id, fld, func) {
 			'height':'100%'
 		})
 		.fadeIn(500);
-	var def = fld.val().substr(0, 1)=='#' ? fld.val() : charity_is_hope_rgb2hex(fld.css('backgroundColor'));
+	var def = fld.val().substr(0, 1)=='#' ? fld.val() : weloveyou_rgb2hex(fld.css('backgroundColor'));
 	jQuery('#'+id+'_colorPreview input,#'+id+'_colorOriginal input').val(def);
 	jQuery('#'+id+'_colorPreview,#'+id+'_colorOriginal').css('background',def);
 }
@@ -717,7 +717,7 @@ function charity_is_hope_color_picker_show(id, fld, func) {
 /* Cookies manipulations
 ---------------------------------------------------------------- */
 
-function charity_is_hope_get_cookie(name) {
+function weloveyou_get_cookie(name) {
 	"use strict";
 	var defa = arguments[1]!=undefined ? arguments[1] : null;
 	var start = document.cookie.indexOf(name + '=');
@@ -734,7 +734,7 @@ function charity_is_hope_get_cookie(name) {
 }
 
 
-function charity_is_hope_set_cookie(name, value, expires, path, domain, secure) {
+function weloveyou_set_cookie(name, value, expires, path, domain, secure) {
 	"use strict";
 	var expires = arguments[2]!=undefined ? arguments[2] : 0;
 	var path    = arguments[3]!=undefined ? arguments[3] : '/';
@@ -755,11 +755,11 @@ function charity_is_hope_set_cookie(name, value, expires, path, domain, secure) 
 }
 
 
-function charity_is_hope_del_cookie(name, path, domain) {
+function weloveyou_del_cookie(name, path, domain) {
 	"use strict";
 	var path   = arguments[1]!=undefined ? arguments[1] : '/';
 	var domain = arguments[2]!=undefined ? arguments[2] : '';
-	if (charity_is_hope_get_cookie(name))
+	if (weloveyou_get_cookie(name))
 		document.cookie = name + '=' + ((path) ? ';path=' + path : '')
 				+ ((domain) ? ';domain=' + domain : '')
 				+ ';expires=Thu, 01-Jan-1970 00:00:01 GMT';
@@ -770,13 +770,13 @@ function charity_is_hope_del_cookie(name, path, domain) {
 /* ListBox and ComboBox manipulations
 ---------------------------------------------------------------- */
 
-function charity_is_hope_clear_listbox(box) {
+function weloveyou_clear_listbox(box) {
 	"use strict";
 	for (var i=box.options.length-1; i>=0; i--)
 		box.options[i] = null;
 }
 
-function charity_is_hope_add_listbox_item(box, val, text) {
+function weloveyou_add_listbox_item(box, val, text) {
 	"use strict";
 	var item = new Option();
 	item.value = val;
@@ -784,7 +784,7 @@ function charity_is_hope_add_listbox_item(box, val, text) {
     box.options.add(item);
 }
 
-function charity_is_hope_del_listbox_item_by_value(box, val) {
+function weloveyou_del_listbox_item_by_value(box, val) {
 	"use strict";
 	for (var i=0; i<box.options.length; i++) {
 		if (box.options[i].value == val) {
@@ -794,7 +794,7 @@ function charity_is_hope_del_listbox_item_by_value(box, val) {
 	}
 }
 
-function charity_is_hope_del_listbox_item_by_text(box, txt) {
+function weloveyou_del_listbox_item_by_text(box, txt) {
 	"use strict";
 	for (var i=0; i<box.options.length; i++) {
 		if (box.options[i].text == txt) {
@@ -804,7 +804,7 @@ function charity_is_hope_del_listbox_item_by_text(box, txt) {
 	}
 }
 
-function charity_is_hope_find_listbox_item_by_value(box, val) {
+function weloveyou_find_listbox_item_by_value(box, val) {
 	"use strict";
 	var idx = -1;
 	for (var i=0; i<box.options.length; i++) {
@@ -816,7 +816,7 @@ function charity_is_hope_find_listbox_item_by_value(box, val) {
 	return idx;
 }
 
-function charity_is_hope_find_listbox_item_by_text(box, txt) {
+function weloveyou_find_listbox_item_by_text(box, txt) {
 	"use strict";
 	var idx = -1;
 	for (var i=0; i<box.options.length; i++) {
@@ -828,21 +828,21 @@ function charity_is_hope_find_listbox_item_by_text(box, txt) {
 	return idx;
 }
 
-function charity_is_hope_select_listbox_item_by_value(box, val) {
+function weloveyou_select_listbox_item_by_value(box, val) {
 	"use strict";
 	for (var i = 0; i < box.options.length; i++) {
 		box.options[i].selected = (val == box.options[i].value);
 	}
 }
 
-function charity_is_hope_select_listbox_item_by_text(box, txt) {
+function weloveyou_select_listbox_item_by_text(box, txt) {
 	"use strict";
 	for (var i = 0; i < box.options.length; i++) {
 		box.options[i].selected = (txt == box.options[i].text);
 	}
 }
 
-function charity_is_hope_get_listbox_values(box) {
+function weloveyou_get_listbox_values(box) {
 	"use strict";
 	var delim = arguments[1] ? arguments[1] : ',';
 	var str = '';
@@ -852,7 +852,7 @@ function charity_is_hope_get_listbox_values(box) {
 	return str;
 }
 
-function charity_is_hope_get_listbox_texts(box) {
+function weloveyou_get_listbox_texts(box) {
 	"use strict";
 	var delim = arguments[1] ? arguments[1] : ',';
 	var str = '';
@@ -862,7 +862,7 @@ function charity_is_hope_get_listbox_texts(box) {
 	return str;
 }
 
-function charity_is_hope_sort_listbox(box)  {
+function weloveyou_sort_listbox(box)  {
 	"use strict";
 	var temp_opts = new Array();
 	var temp = new Option();
@@ -883,7 +883,7 @@ function charity_is_hope_sort_listbox(box)  {
 	}
 }
 
-function charity_is_hope_get_listbox_selected_index(box) {
+function weloveyou_get_listbox_selected_index(box) {
 	"use strict";
 	for (var i = 0; i < box.options.length; i++) {
 		if (box.options[i].selected)
@@ -892,7 +892,7 @@ function charity_is_hope_get_listbox_selected_index(box) {
 	return -1;
 }
 
-function charity_is_hope_get_listbox_selected_value(box) {
+function weloveyou_get_listbox_selected_value(box) {
 	"use strict";
 	for (var i = 0; i < box.options.length; i++) {
 		if (box.options[i].selected) {
@@ -902,7 +902,7 @@ function charity_is_hope_get_listbox_selected_value(box) {
 	return null;
 }
 
-function charity_is_hope_get_listbox_selected_text(box) {
+function weloveyou_get_listbox_selected_text(box) {
 	"use strict";
 	for (var i = 0; i < box.options.length; i++) {
 		if (box.options[i].selected) {
@@ -912,7 +912,7 @@ function charity_is_hope_get_listbox_selected_text(box) {
 	return null;
 }
 
-function charity_is_hope_get_listbox_selected_option(box) {
+function weloveyou_get_listbox_selected_option(box) {
 	"use strict";
 	for (var i = 0; i < box.options.length; i++) {
 		if (box.options[i].selected) {
@@ -927,21 +927,21 @@ function charity_is_hope_get_listbox_selected_option(box) {
 /* Radio buttons manipulations
 ---------------------------------------------------------------- */
 
-function charity_is_hope_get_radio_value(radioGroupObj) {
+function weloveyou_get_radio_value(radioGroupObj) {
 	"use strict";
 	for (var i=0; i < radioGroupObj.length; i++)
 		if (radioGroupObj[i].checked) return radioGroupObj[i].value;
 	return null;
 }
 
-function charity_is_hope_set_radio_checked_by_num(radioGroupObj, num) {
+function weloveyou_set_radio_checked_by_num(radioGroupObj, num) {
 	"use strict";
 	for (var i=0; i < radioGroupObj.length; i++)
 		if (radioGroupObj[i].checked && i!=num) radioGroupObj[i].checked=false;
 		else if (i==num) radioGroupObj[i].checked=true;
 }
 
-function charity_is_hope_set_radio_checked_by_value(radioGroupObj, val) {
+function weloveyou_set_radio_checked_by_value(radioGroupObj, val) {
 	"use strict";
 	for (var i=0; i < radioGroupObj.length; i++)
 		if (radioGroupObj[i].checked && radioGroupObj[i].value!=val) radioGroupObj[i].checked=false;
@@ -955,7 +955,7 @@ function charity_is_hope_set_radio_checked_by_value(radioGroupObj, val) {
 
 /*
 // Usage example:
-var error = charity_is_hope_form_validate(jQuery(form_selector), {				// -------- Options ---------
+var error = weloveyou_form_validate(jQuery(form_selector), {				// -------- Options ---------
 	error_message_show: true,									// Display or not error message
 	error_message_time: 5000,									// Time to display error message
 	error_message_class: 'sc_infobox sc_infobox_style_error',	// Class, appended to error message block
@@ -992,7 +992,7 @@ var error = charity_is_hope_form_validate(jQuery(form_selector), {				// -------
 });
 */
 
-function charity_is_hope_form_validate(form, opt) {
+function weloveyou_form_validate(form, opt) {
 	"use strict";
 	var error_msg = '';
 	form.find(":input").each(function() {
@@ -1064,7 +1064,7 @@ function charity_is_hope_form_validate(form, opt) {
 ---------------------------------------------------------------- */
 
 // Animated scroll to selected id
-function charity_is_hope_document_animate_to(id) {
+function weloveyou_document_animate_to(id) {
 	if (id.indexOf('#')==-1) id = '#' + id;
 	var obj = jQuery(id).eq(0);
 	if (obj.length == 0) return;
@@ -1075,7 +1075,7 @@ function charity_is_hope_document_animate_to(id) {
 }
 
 // Change browser address without reload page
-function charity_is_hope_document_set_location(curLoc){
+function weloveyou_document_set_location(curLoc){
 	try {
 		history.pushState(null, null, curLoc);
 		return;
@@ -1084,15 +1084,15 @@ function charity_is_hope_document_set_location(curLoc){
 }
 
 // Add hidden elements init functions after tab, accordion, toggles activate
-function charity_is_hope_add_hidden_elements_handler(key, handler) {
-	charity_is_hope_storage_set_array('init_hidden_elements', key, handler);
+function weloveyou_add_hidden_elements_handler(key, handler) {
+	weloveyou_storage_set_array('init_hidden_elements', key, handler);
 }
 
 // Init hidden elements after tab, accordion, toggles activate
-function charity_is_hope_init_hidden_elements(cont) {
-	if (CHARITY_IS_HOPE_STORAGE['init_hidden_elements']) {
-		for (key in CHARITY_IS_HOPE_STORAGE['init_hidden_elements']) {
-			CHARITY_IS_HOPE_STORAGE['init_hidden_elements'][key](cont);
+function weloveyou_init_hidden_elements(cont) {
+	if (weloveyou_STORAGE['init_hidden_elements']) {
+		for (key in weloveyou_STORAGE['init_hidden_elements']) {
+			weloveyou_STORAGE['init_hidden_elements'][key](cont);
 		}
 	}
 }
@@ -1102,15 +1102,15 @@ function charity_is_hope_init_hidden_elements(cont) {
 /* Browsers detection
 ---------------------------------------------------------------- */
 
-function charity_is_hope_browser_is_mobile() {
+function weloveyou_browser_is_mobile() {
 	var check = false;
 	(function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od|ad)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4)))check = true})(navigator.userAgent||navigator.vendor||window.opera);
 	return check;
 }
-function charity_is_hope_browser_is_ios() {
+function weloveyou_browser_is_ios() {
 	return navigator.userAgent.match(/iPad|iPhone|iPod/i) != null;
 }
-function charity_is_hope_is_retina() {
+function weloveyou_is_retina() {
 	var mediaQuery = '(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx)';
 	return (window.devicePixelRatio > 1) || (window.matchMedia && window.matchMedia(mediaQuery).matches);
 }
@@ -1119,7 +1119,7 @@ function charity_is_hope_is_retina() {
 /* Files functions
 ---------------------------------------------------------------- */
 
-function charity_is_hope_get_file_name(path) {
+function weloveyou_get_file_name(path) {
 	path = path.replace(/\\/g, '/');
 	var pos = path.lastIndexOf('/');
 	if (pos >= 0)
@@ -1127,7 +1127,7 @@ function charity_is_hope_get_file_name(path) {
 	return path;
 }
 
-function charity_is_hope_get_file_ext(path) {
+function weloveyou_get_file_ext(path) {
 	var pos = path.lastIndexOf('.');
 	path = pos >= 0 ? path.substr(pos+1) : '';
 	return path;
@@ -1139,7 +1139,7 @@ function charity_is_hope_get_file_ext(path) {
 ---------------------------------------------------------------- */
 
 // Return true, if all images in the specified container are loaded
-function charity_is_hope_check_images_complete(cont) {
+function weloveyou_check_images_complete(cont) {
 	var complete = true;
 	cont.find('img').each(function() {
 		if (!complete) return;

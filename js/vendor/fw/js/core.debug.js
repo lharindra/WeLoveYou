@@ -1,12 +1,12 @@
 /**
- * Charity Is Hope Framework: Debug utilities
+ * WeLoveYou Framework: Debug utilities
  *
- * @package	charity_is_hope
- * @since	charity_is_hope 1.0
+ * @package	weloveyou
+ * @since	weloveyou 1.0
  */
 
 
-function charity_is_hope_debug_object(obj) {
+function weloveyou_debug_object(obj) {
 	"use strict";
 	var html = arguments[1] ? arguments[1] : false;				// Tags decorate
 	var recursive = arguments[2] ? arguments[2] : false;		// Show inner objects (arrays)
@@ -16,14 +16,14 @@ function charity_is_hope_debug_object(obj) {
 	var addStr = "";
 	if (level>0) {
 		dispStr += (obj===null ? "null" : typeof(obj)) + (html ? "\n<br />" : "\n");
-		addStr = charity_is_hope_replicate(html ? '&nbsp;' : ' ', level*2);
+		addStr = weloveyou_replicate(html ? '&nbsp;' : ' ', level*2);
 	}
 	if (obj!==null) {
 		for (var prop in obj) {
 			if (!showMethods && typeof(obj[prop])=='function')	// || prop=='innerHTML' || prop=='outerHTML' || prop=='innerText' || prop=='outerText')
 				continue;
 			if (recursive && (typeof(obj[prop])=='object' || typeof(obj[prop])=='array') && obj[prop]!=obj)
-				dispStr += addStr + (html ? "<b>" : "")+prop+(html ? "</b>" : "")+'='+charity_is_hope_debug_object(obj[prop], html, recursive, showMethods, level+1);
+				dispStr += addStr + (html ? "<b>" : "")+prop+(html ? "</b>" : "")+'='+weloveyou_debug_object(obj[prop], html, recursive, showMethods, level+1);
 			else
 				dispStr += addStr + (html ? "<b>" : "")+prop+(html ? "</b>" : "")+'='+(typeof(obj[prop])=='string' ? '"' : '')+obj[prop]+(typeof(obj[prop])=='string' ? '"' : '')+(html ? "\n<br />" : "\n");
 		}
@@ -31,8 +31,8 @@ function charity_is_hope_debug_object(obj) {
 	return dispStr;	//decodeURI(dispStr);
 }
 
-function charity_is_hope_debug_log(s) {
-	if (CHARITY_IS_HOPE_STORAGE['user_logged_in']) {
+function weloveyou_debug_log(s) {
+	if (weloveyou_STORAGE['user_logged_in']) {
 		if (jQuery('.debug_log').length == 0) {
 			jQuery('body').append('<pre class="debug_log"><span class="debug_log_close" onclick="jQuery(\'.debug_log\').hide();">x</span></pre>'); 
 		}
@@ -42,8 +42,8 @@ function charity_is_hope_debug_log(s) {
 }
 
 if (window.dcl===undefined) function dcl(s) { console.log(s); }
-if (window.dco===undefined) function dco(s,r) { console.log(charity_is_hope_debug_object(s,false,r)); }
-if (window.dal===undefined) function dal(s) { if (CHARITY_IS_HOPE_STORAGE['user_logged_in']) alert(s); }
-if (window.dao===undefined) function dao(s,h,r) { if (CHARITY_IS_HOPE_STORAGE['user_logged_in']) alert(charity_is_hope_debug_object(s,h,r)); }
-if (window.ddl===undefined) function ddl(s) { charity_is_hope_debug_log(s); }
-if (window.ddo===undefined) function ddo(s,h,r) { charity_is_hope_debug_log(charity_is_hope_debug_object(s,h,r)); }
+if (window.dco===undefined) function dco(s,r) { console.log(weloveyou_debug_object(s,false,r)); }
+if (window.dal===undefined) function dal(s) { if (weloveyou_STORAGE['user_logged_in']) alert(s); }
+if (window.dao===undefined) function dao(s,h,r) { if (weloveyou_STORAGE['user_logged_in']) alert(weloveyou_debug_object(s,h,r)); }
+if (window.ddl===undefined) function ddl(s) { weloveyou_debug_log(s); }
+if (window.ddo===undefined) function ddo(s,h,r) { weloveyou_debug_log(weloveyou_debug_object(s,h,r)); }

@@ -1,10 +1,10 @@
 /* global jQuery:false */
-/* global CHARITY_IS_HOPE_STORAGE:false */
+/* global weloveyou_STORAGE:false */
 
 jQuery(document).ready(function() {
 	"use strict";
-	CHARITY_IS_HOPE_STORAGE['theme_init_counter'] = 0;
-	charity_is_hope_init_actions();
+	weloveyou_STORAGE['theme_init_counter'] = 0;
+	weloveyou_init_actions();
 });
 
 jQuery(window).on('beforeunload', function() {
@@ -15,11 +15,11 @@ jQuery(window).on('beforeunload', function() {
 
 
 // Theme init actions
-function charity_is_hope_init_actions() {
+function weloveyou_init_actions() {
 	"use strict";
 
-	if (CHARITY_IS_HOPE_STORAGE['vc_edit_mode'] && jQuery('.vc_empty-placeholder').length==0 && CHARITY_IS_HOPE_STORAGE['theme_init_counter']++ < 30) {
-		setTimeout(charity_is_hope_init_actions, 200);
+	if (weloveyou_STORAGE['vc_edit_mode'] && jQuery('.vc_empty-placeholder').length==0 && weloveyou_STORAGE['theme_init_counter']++ < 30) {
+		setTimeout(weloveyou_init_actions, 200);
 		return;
 	}
 	
@@ -27,30 +27,30 @@ function charity_is_hope_init_actions() {
 	jQuery('#page_preloader').animate({opacity:0}, 500, function() { jQuery(this).css({display: 'none'}); });
 
 	// Check for Retina display
-	if (charity_is_hope_is_retina()) {
-		charity_is_hope_set_cookie('charity_is_hope_retina', 1, 365);
+	if (weloveyou_is_retina()) {
+		weloveyou_set_cookie('weloveyou_retina', 1, 365);
 	}
 
-	charity_is_hope_ready_actions();
+	weloveyou_ready_actions();
 
 	// Add resize handlers after VC row stretch handlers on('resize.vcRowBehaviour', ...)
 	setTimeout(function() {
-		jQuery(window).on('resize.charity_is_hope', function() {
-			charity_is_hope_resize_actions();
-			charity_is_hope_scroll_actions()
-		}).trigger('resize.charity_is_hope');
+		jQuery(window).on('resize.weloveyou', function() {
+			weloveyou_resize_actions();
+			weloveyou_scroll_actions()
+		}).trigger('resize.weloveyou');
 	}, 10);
 
 	// Add resize on VC action vc-full-width-row
 	jQuery(document).on('vc-full-width-row', function() {
-		charity_is_hope_resize_actions();
-		charity_is_hope_scroll_actions()
+		weloveyou_resize_actions();
+		weloveyou_scroll_actions()
 	});
 
 	// Scroll handlers
-	jQuery(window).on('scroll.charity_is_hope', function() {
+	jQuery(window).on('scroll.weloveyou', function() {
 		"use strict";
-		charity_is_hope_scroll_actions();
+		weloveyou_scroll_actions();
 	});
 }
 
@@ -58,12 +58,12 @@ function charity_is_hope_init_actions() {
 
 // Theme first load actions
 //==============================================
-function charity_is_hope_ready_actions() {
+function weloveyou_ready_actions() {
 	"use strict";
 
 	// Call theme specific action (if exists)
     //----------------------------------------------
-	if (window.charity_is_hope_theme_ready_actions) charity_is_hope_theme_ready_actions();
+	if (window.weloveyou_theme_ready_actions) weloveyou_theme_ready_actions();
 
 
 	// Widgets decoration
@@ -91,7 +91,7 @@ function charity_is_hope_ready_actions() {
 	jQuery('.widget_subcategories').on('change', 'select', function() {
 		var dropdown = jQuery(this).get(0);
 		if ( dropdown.options[dropdown.selectedIndex].value > 0 ) {
-			location.href = CHARITY_IS_HOPE_STORAGE['site_url'] + "/?cat="+dropdown.options[dropdown.selectedIndex].value;
+			location.href = weloveyou_STORAGE['site_url'] + "/?cat="+dropdown.options[dropdown.selectedIndex].value;
 		}
 	});
 
@@ -104,9 +104,9 @@ function charity_is_hope_ready_actions() {
 		var y = jQuery(this).data('year');
 		var l = jQuery(this).data('letter');
 		var pt = jQuery(this).data('type');
-		jQuery.post(CHARITY_IS_HOPE_STORAGE['ajax_url'], {
+		jQuery.post(weloveyou_STORAGE['ajax_url'], {
 			action: 'calendar_change_month',
-			nonce: CHARITY_IS_HOPE_STORAGE['ajax_nonce'],
+			nonce: weloveyou_STORAGE['ajax_nonce'],
 			letter: l,
 			month: m,
 			year: y,
@@ -116,7 +116,7 @@ function charity_is_hope_ready_actions() {
 			try {
 				rez = JSON.parse(response);
 			} catch (e) {
-				rez = { error: CHARITY_IS_HOPE_STORAGE['ajax_error'] };
+				rez = { error: weloveyou_STORAGE['ajax_error'] };
 				console.log(response);
 			}
 			if (rez.error === '') {
@@ -159,7 +159,7 @@ function charity_is_hope_ready_actions() {
 	// Clone side menu for responsive
 	if (jQuery('ul#menu_side').length > 0) {
 		jQuery('ul#menu_side').clone().removeAttr('id').removeClass('menu_side_nav').addClass('menu_side_responsive').insertAfter('ul#menu_side');
-		charity_is_hope_show_current_menu_item(jQuery('.menu_side_responsive'), jQuery('.sidebar_outer_menu_responsive_button'));
+		weloveyou_show_current_menu_item(jQuery('.menu_side_responsive'), jQuery('.sidebar_outer_menu_responsive_button'));
 	}
 	if (jQuery('.header_mobile').length > 0) {
 		jQuery('.header_mobile .menu_main_nav_area ul#menu_main').removeAttr('id');
@@ -168,7 +168,7 @@ function charity_is_hope_ready_actions() {
 			jQuery('.header_mobile .mask').toggleClass('show');
 			jQuery('html').toggleClass('menu_mobile_open');
 			// Fix for Safari
-			if (charity_is_hope_browser_is_ios() && jQuery('body').hasClass('menu_mobile')) {
+			if (weloveyou_browser_is_ios() && jQuery('body').hasClass('menu_mobile')) {
 				jQuery('body').toggleClass('ios_fixed');
 			}
 		});
@@ -177,7 +177,7 @@ function charity_is_hope_ready_actions() {
 			jQuery('.header_mobile .mask').removeClass('show');
 			jQuery('html').removeClass('menu_mobile_open');
 			// Fix for Safari
-			if (charity_is_hope_browser_is_ios() && jQuery('body').hasClass('menu_mobile')) {
+			if (weloveyou_browser_is_ios() && jQuery('body').hasClass('menu_mobile')) {
 				jQuery('body').removeClass('ios_fixed');
 			}
 		});
@@ -230,23 +230,23 @@ function charity_is_hope_ready_actions() {
 	});
 	
 	// Init superfish menus
-	charity_is_hope_init_sfmenu('.menu_main_nav_area ul#menu_main, ul#menu_user, ul#menu_side, body:not(.woocommerce) .widget_area:not(.footer_wrap) .widget_product_categories ul.product-categories');
+	weloveyou_init_sfmenu('.menu_main_nav_area ul#menu_main, ul#menu_user, ul#menu_side, body:not(.woocommerce) .widget_area:not(.footer_wrap) .widget_product_categories ul.product-categories');
 
 	// Slide effect for main menu
-	if (CHARITY_IS_HOPE_STORAGE['menu_hover']=='slide_line' || CHARITY_IS_HOPE_STORAGE['menu_hover']=='slide_box') {
+	if (weloveyou_STORAGE['menu_hover']=='slide_line' || weloveyou_STORAGE['menu_hover']=='slide_box') {
 		setTimeout(function() {
 			"use strict";
 			jQuery('#menu_main').spasticNav({
-				style: CHARITY_IS_HOPE_STORAGE['menu_hover']=='slide_line' ? 'line' : 'box',
-				color: CHARITY_IS_HOPE_STORAGE['accent1_hover'],
+				style: weloveyou_STORAGE['menu_hover']=='slide_line' ? 'line' : 'box',
+				color: weloveyou_STORAGE['accent1_hover'],
 				colorOverride: false
 			});
 		}, 500);
 	}
 
 	// Show table of contents for the current page
-	if (CHARITY_IS_HOPE_STORAGE['toc_menu'] != 'hide' && CHARITY_IS_HOPE_STORAGE['toc_menu'] != 'no') {
-		charity_is_hope_build_page_toc();
+	if (weloveyou_STORAGE['toc_menu'] != 'hide' && weloveyou_STORAGE['toc_menu'] != 'no') {
+		weloveyou_build_page_toc();
 	}
 
 	// One page mode for menu links (scroll to anchor)
@@ -263,8 +263,8 @@ function charity_is_hope_ready_actions() {
 			var now = pos==0;
 			if (!now) now = loc == href.substring(0, pos);
 			if (now) {
-				charity_is_hope_document_animate_to(href.substr(pos));
-				charity_is_hope_document_set_location(pos==0 ? loc + href : href);
+				weloveyou_document_animate_to(href.substr(pos));
+				weloveyou_document_set_location(pos==0 ? loc + href : href);
 				e.preventDefault();
 				return false;
 			}
@@ -273,8 +273,8 @@ function charity_is_hope_ready_actions() {
 	
 	
 	// Store height of the top and side panels
-	CHARITY_IS_HOPE_STORAGE['top_panel_height'] = 0;	//Math.max(0, jQuery('.top_panel_wrap').height());
-	CHARITY_IS_HOPE_STORAGE['side_panel_height'] = 0;
+	weloveyou_STORAGE['top_panel_height'] = 0;	//Math.max(0, jQuery('.top_panel_wrap').height());
+	weloveyou_STORAGE['side_panel_height'] = 0;
 
 
 	// Pagination
@@ -284,7 +284,7 @@ function charity_is_hope_ready_actions() {
 	jQuery('.pager_cur').on('click', function(e) {
 		"use strict";
 		jQuery('.pager_slider').slideDown(300, function() {
-			charity_is_hope_sc_init(jQuery('.pager_slider').eq(0));
+			weloveyou_sc_init(jQuery('.pager_slider').eq(0));
 		});
 		e.preventDefault();
 		return false;
@@ -294,44 +294,44 @@ function charity_is_hope_ready_actions() {
 	// View More button
 	jQuery('#viewmore_link').on('click', function(e) {
 		"use strict";
-		if (!CHARITY_IS_HOPE_STORAGE['viewmore_busy'] && !jQuery(this).hasClass('viewmore_empty')) {
+		if (!weloveyou_STORAGE['viewmore_busy'] && !jQuery(this).hasClass('viewmore_empty')) {
 			jQuery(this).parent().addClass('loading');
-			CHARITY_IS_HOPE_STORAGE['viewmore_busy'] = true;
-			jQuery.post(CHARITY_IS_HOPE_STORAGE['ajax_url'], {
+			weloveyou_STORAGE['viewmore_busy'] = true;
+			jQuery.post(weloveyou_STORAGE['ajax_url'], {
 				action: 'view_more_posts',
-				nonce: CHARITY_IS_HOPE_STORAGE['ajax_nonce'],
-				page: CHARITY_IS_HOPE_STORAGE['viewmore_page']+1,
-				data: CHARITY_IS_HOPE_STORAGE['viewmore_data'],
-				vars: CHARITY_IS_HOPE_STORAGE['viewmore_vars']
+				nonce: weloveyou_STORAGE['ajax_nonce'],
+				page: weloveyou_STORAGE['viewmore_page']+1,
+				data: weloveyou_STORAGE['viewmore_data'],
+				vars: weloveyou_STORAGE['viewmore_vars']
 			}).done(function(response) {
 				"use strict";
 				var rez = {};
 				try {
 					rez = JSON.parse(response);
 				} catch (e) {
-					rez = { error: CHARITY_IS_HOPE_STORAGE['ajax_error'] };
+					rez = { error: weloveyou_STORAGE['ajax_error'] };
 					console.log(response);
 				}
 				jQuery('#viewmore_link').parent().removeClass('loading');
-				CHARITY_IS_HOPE_STORAGE['viewmore_busy'] = false;
+				weloveyou_STORAGE['viewmore_busy'] = false;
 				if (rez.error === '') {
 					var posts_container = jQuery('.content').eq(0);
 					if (posts_container.find('.isotope_wrap').length > 0) posts_container = posts_container.find('.isotope_wrap').eq(0);
 					if (posts_container.hasClass('isotope_wrap')) {
 						posts_container.data('last-width', 0).append(rez.data);
-						CHARITY_IS_HOPE_STORAGE['isotope_init_counter'] = 0;
-						charity_is_hope_init_appended_isotope(posts_container, rez.filters);
+						weloveyou_STORAGE['isotope_init_counter'] = 0;
+						weloveyou_init_appended_isotope(posts_container, rez.filters);
 					} else
 						jQuery('#viewmore').before(rez.data);
 
-					CHARITY_IS_HOPE_STORAGE['viewmore_page']++;
+					weloveyou_STORAGE['viewmore_page']++;
 					if (rez.no_more_data==1) {
 						jQuery('#viewmore_link').addClass('viewmore_empty').parent().hide();
 					}
 
-					charity_is_hope_init_post_formats();
-					charity_is_hope_sc_init(posts_container);
-					charity_is_hope_scroll_actions();
+					weloveyou_init_post_formats();
+					weloveyou_sc_init(posts_container);
+					weloveyou_scroll_actions();
 				}
 			});
 		}
@@ -347,7 +347,7 @@ function charity_is_hope_ready_actions() {
 	jQuery('.woocommerce,.woocommerce-page').on('click', '.mode_buttons a', function(e) {
 		"use strict";
 		var mode = jQuery(this).hasClass('woocommerce_thumbs') ? 'thumbs' : 'list';
-		jQuery.cookie('charity_is_hope_shop_mode', mode, {expires: 365, path: '/'});
+		jQuery.cookie('weloveyou_shop_mode', mode, {expires: 365, path: '/'});
 		jQuery(this).siblings('input').val(mode).parents('form').get(0).submit();
 		e.preventDefault();
 		return false;
@@ -400,7 +400,7 @@ function charity_is_hope_ready_actions() {
 	jQuery('.single-product .woocommerce-tabs')
 		.addClass('trx-stretch-width scheme_light')
 		.after('<div class="trx-stretch-width-original"></div>');
-	charity_is_hope_stretch_width();
+	weloveyou_stretch_width();
 
 
 	// Popup login and register windows
@@ -408,8 +408,8 @@ function charity_is_hope_ready_actions() {
 	jQuery('.popup_link,.popup_login_link,.popup_register_link').addClass('inited').on('click', function(e){
 		var popup = jQuery(jQuery(this).attr('href'));
 		if (popup.length === 1) {
-			charity_is_hope_hide_popup(jQuery(popup.hasClass('popup_login') ? '.popup_registration' : '.popup_login' ));
-			charity_is_hope_show_popup(popup);
+			weloveyou_hide_popup(jQuery(popup.hasClass('popup_login') ? '.popup_registration' : '.popup_login' ));
+			weloveyou_show_popup(popup);
 		}
 		e.preventDefault();
 		return false;
@@ -417,7 +417,7 @@ function charity_is_hope_ready_actions() {
 	jQuery('.popup_wrap').on('click', '.popup_close', function(e){
 		var popup = jQuery(this).parent();
 		if (popup.length === 1) {
-			charity_is_hope_hide_popup(popup);
+			weloveyou_hide_popup(popup);
 		}
 		e.preventDefault();
 		return false;
@@ -432,7 +432,7 @@ function charity_is_hope_ready_actions() {
 		"use strict";
 		var title = window.document.title.split('|')[0];
 		var url = window.location.href;
-		var list = jQuery.cookie('charity_is_hope_bookmarks');
+		var list = jQuery.cookie('weloveyou_bookmarks');
 		var exists = false;
 		if (list) {
 			try {
@@ -449,18 +449,18 @@ function charity_is_hope_ready_actions() {
 		} else
 			list = new Array();
 		if (!exists) {
-			var message_popup = charity_is_hope_message_dialog('<label for="bookmark_title">'+CHARITY_IS_HOPE_STORAGE['strings']['bookmark_title']+'</label><br><input type="text" id="bookmark_title" name="bookmark_title" value="'+title+'">', CHARITY_IS_HOPE_STORAGE['strings']['bookmark_add'], null,
+			var message_popup = weloveyou_message_dialog('<label for="bookmark_title">'+weloveyou_STORAGE['strings']['bookmark_title']+'</label><br><input type="text" id="bookmark_title" name="bookmark_title" value="'+title+'">', weloveyou_STORAGE['strings']['bookmark_add'], null,
 				function(btn, popup) {
 					"use strict";
 					if (btn != 1) return;
 					title = message_popup.find('#bookmark_title').val();
 					list.push({title: title, url: url});
-					jQuery('.bookmarks_list').append('<li><a href="'+url+'" class="bookmarks_item">'+title+'<span class="bookmarks_delete icon-cancel" title="'+CHARITY_IS_HOPE_STORAGE['strings']['bookmark_del']+'"></span></a></li>');
-					jQuery.cookie('charity_is_hope_bookmarks', JSON.stringify(list), {expires: 365, path: '/'});
-					setTimeout(function () {charity_is_hope_message_success(CHARITY_IS_HOPE_STORAGE['strings']['bookmark_added'], CHARITY_IS_HOPE_STORAGE['strings']['bookmark_add']);}, CHARITY_IS_HOPE_STORAGE['message_timeout']/4);
+					jQuery('.bookmarks_list').append('<li><a href="'+url+'" class="bookmarks_item">'+title+'<span class="bookmarks_delete icon-cancel" title="'+weloveyou_STORAGE['strings']['bookmark_del']+'"></span></a></li>');
+					jQuery.cookie('weloveyou_bookmarks', JSON.stringify(list), {expires: 365, path: '/'});
+					setTimeout(function () {weloveyou_message_success(weloveyou_STORAGE['strings']['bookmark_added'], weloveyou_STORAGE['strings']['bookmark_add']);}, weloveyou_STORAGE['message_timeout']/4);
 				});
 		} else
-			charity_is_hope_message_warning(CHARITY_IS_HOPE_STORAGE['strings']['bookmark_exists'], CHARITY_IS_HOPE_STORAGE['strings']['bookmark_add']);
+			weloveyou_message_warning(weloveyou_STORAGE['strings']['bookmark_exists'], weloveyou_STORAGE['strings']['bookmark_add']);
 		e.preventDefault();
 		return false;
 	});
@@ -469,14 +469,14 @@ function charity_is_hope_ready_actions() {
 	jQuery('.bookmarks_list').on('click', '.bookmarks_delete', function(e) {
 		"use strict";
 		var idx = jQuery(this).parent().index();
-		var list = jQuery.cookie('charity_is_hope_bookmarks');
+		var list = jQuery.cookie('weloveyou_bookmarks');
 		if (list) {
 			try {
 				list = JSON.parse(list);
 			} catch (e) {}
 			if (list.length) {
 				list.splice(idx, 1);
-				jQuery.cookie('charity_is_hope_bookmarks', JSON.stringify(list), {expires: 365, path: '/'});
+				jQuery.cookie('weloveyou_bookmarks', JSON.stringify(list), {expires: 365, path: '/'});
 			}
 		}
 		jQuery(this).parent().remove();
@@ -499,28 +499,28 @@ function charity_is_hope_ready_actions() {
 	});
 
 	// AJAX views counter
-	if (CHARITY_IS_HOPE_STORAGE['ajax_views_counter'] !== undefined) {
+	if (weloveyou_STORAGE['ajax_views_counter'] !== undefined) {
 		setTimeout(function(){
-			jQuery.post(CHARITY_IS_HOPE_STORAGE['ajax_url'], {
+			jQuery.post(weloveyou_STORAGE['ajax_url'], {
 				action: 'post_counter',
-				nonce: CHARITY_IS_HOPE_STORAGE['ajax_nonce'],
-				post_id: CHARITY_IS_HOPE_STORAGE['ajax_views_counter']['post_id'],
-				views: CHARITY_IS_HOPE_STORAGE['ajax_views_counter']['post_views']
+				nonce: weloveyou_STORAGE['ajax_nonce'],
+				post_id: weloveyou_STORAGE['ajax_views_counter']['post_id'],
+				views: weloveyou_STORAGE['ajax_views_counter']['post_views']
 			});
 			}, 10);
 	}
 
     // Show system message
-	charity_is_hope_show_system_message();
+	weloveyou_show_system_message();
 
 	// Init post format specific scripts
-	charity_is_hope_init_post_formats();
+	weloveyou_init_post_formats();
 
 	// Call sc init action (if exists)
-	if (window.charity_is_hope_sc_init_actions) charity_is_hope_sc_init_actions();
+	if (window.weloveyou_sc_init_actions) weloveyou_sc_init_actions();
 
 	// Init hidden elements (if exists)
-	if (window.charity_is_hope_init_hidden_elements) charity_is_hope_init_hidden_elements(jQuery('body').eq(0));
+	if (window.weloveyou_init_hidden_elements) weloveyou_init_hidden_elements(jQuery('body').eq(0));
 	
 } //end ready
 
@@ -531,19 +531,19 @@ function charity_is_hope_ready_actions() {
 //==============================================
 
 // Do actions when page scrolled
-function charity_is_hope_scroll_actions() {
+function weloveyou_scroll_actions() {
 	"use strict";
 	
 	// Call theme specific action (if exists)
     //----------------------------------------------
-	if (window.charity_is_hope_theme_scroll_actions) charity_is_hope_theme_scroll_actions();
+	if (window.weloveyou_theme_scroll_actions) weloveyou_theme_scroll_actions();
 
 	var scroll_offset = jQuery(window).scrollTop();
 	var scroll_to_top_button = jQuery('.scroll_to_top');
 	var adminbar_height = Math.max(0, jQuery('#wpadminbar').height());
 	
-	if (CHARITY_IS_HOPE_STORAGE['top_panel_height'] < 1) {
-		CHARITY_IS_HOPE_STORAGE['top_panel_height'] = Math.max(0, jQuery('.top_panel_wrap').height());
+	if (weloveyou_STORAGE['top_panel_height'] < 1) {
+		weloveyou_STORAGE['top_panel_height'] = Math.max(0, jQuery('.top_panel_wrap').height());
 	}
 	var $valuewidth = jQuery(window).width();
 	var para = document.getElementById("addbreak");
@@ -554,7 +554,7 @@ function charity_is_hope_scroll_actions() {
 		jQuery("#addbreak").html('<b class="bigger_letter">C</b><b class="value_highlight">ommitment</b> leads to <b class="bigger_letter">A</b>ction. Action brings your <b class="bigger_letter">D</b>ream closer.');	
 	}
 	// Scroll to top button show/hide
-	if (scroll_offset > CHARITY_IS_HOPE_STORAGE['top_panel_height'])
+	if (scroll_offset > weloveyou_STORAGE['top_panel_height'])
 		
 		scroll_to_top_button.addClass('show box bounce-5');
 	else
@@ -591,21 +591,21 @@ function charity_is_hope_scroll_actions() {
 
 	
 	// Fix/unfix top panel
-	if (!jQuery('body').hasClass('menu_mobile') && CHARITY_IS_HOPE_STORAGE['menu_fixed']) {
+	if (!jQuery('body').hasClass('menu_mobile') && weloveyou_STORAGE['menu_fixed']) {
 		var slider_height = 0;
 		if (jQuery('.top_panel_below .slider_wrap').length > 0) {
 			slider_height = jQuery('.top_panel_below .slider_wrap').height();
 			if (slider_height < 10) {
-				slider_height = jQuery('.slider_wrap').hasClass('.slider_fullscreen') ? jQuery(window).height() : CHARITY_IS_HOPE_STORAGE['slider_height'];
+				slider_height = jQuery('.slider_wrap').hasClass('.slider_fullscreen') ? jQuery(window).height() : weloveyou_STORAGE['slider_height'];
 			}
 		}
-		if (scroll_offset <= slider_height + CHARITY_IS_HOPE_STORAGE['top_panel_height']) {
+		if (scroll_offset <= slider_height + weloveyou_STORAGE['top_panel_height']) {
 			if (jQuery('body').hasClass('top_panel_fixed')) {
 				jQuery('body').removeClass('top_panel_fixed');
 			}
-		} else if (scroll_offset > slider_height + CHARITY_IS_HOPE_STORAGE['top_panel_height']) {
+		} else if (scroll_offset > slider_height + weloveyou_STORAGE['top_panel_height']) {
 			if (!jQuery('body').hasClass('top_panel_fixed') && jQuery(document).height() > jQuery(window).height()*1.5) {
-				jQuery('.top_panel_fixed_wrap').height(CHARITY_IS_HOPE_STORAGE['top_panel_height']);
+				jQuery('.top_panel_fixed_wrap').height(weloveyou_STORAGE['top_panel_height']);
 				jQuery('.top_panel_wrap').css('marginTop', '-150px').animate({'marginTop': 0}, 500);
 				jQuery('body').addClass('top_panel_fixed');
 			}
@@ -614,13 +614,13 @@ function charity_is_hope_scroll_actions() {
 	
 	// Fix/unfix side panel
 	if (jQuery('.sidebar_outer').length > 0) {
-		if (CHARITY_IS_HOPE_STORAGE['side_panel_height'] == 0)	
-			CHARITY_IS_HOPE_STORAGE['side_panel_height'] = jQuery('.sidebar_outer_logo_wrap').outerHeight() + jQuery('.sidebar_outer_menu').outerHeight() + jQuery('.sidebar_outer_widgets').outerHeight();
-		if (scroll_offset + jQuery(window).height() > CHARITY_IS_HOPE_STORAGE['side_panel_height'] + 100) {
+		if (weloveyou_STORAGE['side_panel_height'] == 0)	
+			weloveyou_STORAGE['side_panel_height'] = jQuery('.sidebar_outer_logo_wrap').outerHeight() + jQuery('.sidebar_outer_menu').outerHeight() + jQuery('.sidebar_outer_widgets').outerHeight();
+		if (scroll_offset + jQuery(window).height() > weloveyou_STORAGE['side_panel_height'] + 100) {
 			if (jQuery('.sidebar_outer').css('position')!=='fixed') {
 				jQuery('.sidebar_outer').css({
 					'position': 'fixed',
-					'top': Math.min(0, jQuery(window).height() - CHARITY_IS_HOPE_STORAGE['side_panel_height'] - 100) + 'px',
+					'top': Math.min(0, jQuery(window).height() - weloveyou_STORAGE['side_panel_height'] - 100) + 'px',
 				});
 			}
 		} else {
@@ -648,27 +648,27 @@ function charity_is_hope_scroll_actions() {
 		var off = jQuery(id).offset().top;
 		var id_next  = jQuery(this).next().find('a').attr('href');
 		var off_next = id_next ? jQuery(id_next).offset().top : 1000000;
-		if (off < scroll_offset + jQuery(window).height()*0.8 && scroll_offset + CHARITY_IS_HOPE_STORAGE['top_panel_height'] < off_next)
+		if (off < scroll_offset + jQuery(window).height()*0.8 && scroll_offset + weloveyou_STORAGE['top_panel_height'] < off_next)
 			jQuery(this).addClass('current');
 		else
 			jQuery(this).removeClass('current');
 	});
 	
 	// Infinite pagination
-	charity_is_hope_infinite_scroll()
+	weloveyou_infinite_scroll()
 	
 	// Parallax scroll
-	charity_is_hope_parallax_scroll();
+	weloveyou_parallax_scroll();
 
 	// Call sc scroll actions (if exists)
-	if (window.charity_is_hope_sc_scroll_actions) charity_is_hope_sc_scroll_actions();
+	if (window.weloveyou_sc_scroll_actions) weloveyou_sc_scroll_actions();
 }
 
 
 // Infinite Scroll
-function charity_is_hope_infinite_scroll() {
+function weloveyou_infinite_scroll() {
 	"use strict";
-	if (CHARITY_IS_HOPE_STORAGE['viewmore_busy']) return;
+	if (weloveyou_STORAGE['viewmore_busy']) return;
 	var infinite = jQuery('#viewmore.pagination_infinite');
 	if (infinite.length > 0) {
 		var viewmore = infinite.find('#viewmore_link:not(.viewmore_empty)');
@@ -681,7 +681,7 @@ function charity_is_hope_infinite_scroll() {
 }
 
 // Parallax scroll
-function charity_is_hope_parallax_scroll(){
+function weloveyou_parallax_scroll(){
 	jQuery('.sc_parallax').each(function(){
 		var windowHeight = jQuery(window).height();
 		var scrollTops = jQuery(window).scrollTop();
@@ -705,30 +705,30 @@ function charity_is_hope_parallax_scroll(){
 //==============================================
 
 // Do actions when page scrolled
-function charity_is_hope_resize_actions() {
+function weloveyou_resize_actions() {
 	"use strict";
 
 	// Call theme specific action (if exists)
     //----------------------------------------------
-	if (window.charity_is_hope_theme_resize_actions) charity_is_hope_theme_resize_actions();
+	if (window.weloveyou_theme_resize_actions) weloveyou_theme_resize_actions();
 
 	// Reset stored value
-    if (!jQuery('body').hasClass('top_panel_fixed')) CHARITY_IS_HOPE_STORAGE['top_panel_height'] = 0;
+    if (!jQuery('body').hasClass('top_panel_fixed')) weloveyou_STORAGE['top_panel_height'] = 0;
 
-	charity_is_hope_responsive_menu();
-	charity_is_hope_vc_row_fullwidth_to_boxed();
-	charity_is_hope_video_dimensions();
-	charity_is_hope_resize_video_background();
-	charity_is_hope_resize_fullscreen_slider();
-	charity_is_hope_resize_alter_portfolio();
-	charity_is_hope_stretch_width();
+	weloveyou_responsive_menu();
+	weloveyou_vc_row_fullwidth_to_boxed();
+	weloveyou_video_dimensions();
+	weloveyou_resize_video_background();
+	weloveyou_resize_fullscreen_slider();
+	weloveyou_resize_alter_portfolio();
+	weloveyou_stretch_width();
 
 	// Call sc resize actions (if exists)
-	if (window.charity_is_hope_sc_resize_actions) charity_is_hope_sc_resize_actions();
+	if (window.weloveyou_sc_resize_actions) weloveyou_sc_resize_actions();
 }
 
 // Stretch area to full window width
-function charity_is_hope_stretch_width() {
+function weloveyou_stretch_width() {
 	jQuery('.trx-stretch-width').each(function() {
 		var $el = jQuery(this);
 		var $el_full = $el.next('.trx-stretch-width-original');
@@ -757,7 +757,7 @@ function charity_is_hope_stretch_width() {
 }
 
 // Width vc_row when content boxed
-function charity_is_hope_vc_row_fullwidth_to_boxed(){
+function weloveyou_vc_row_fullwidth_to_boxed(){
 	"use strict";
    if (jQuery('body').hasClass('body_style_boxed')) {
        var width_body = jQuery('body').width();
@@ -786,9 +786,9 @@ function charity_is_hope_vc_row_fullwidth_to_boxed(){
 }
 
 // Check window size and do responsive menu
-function charity_is_hope_responsive_menu() {
+function weloveyou_responsive_menu() {
 	"use strict";
-	if (charity_is_hope_is_responsive_need(CHARITY_IS_HOPE_STORAGE['menu_mobile'])) {
+	if (weloveyou_is_responsive_need(weloveyou_STORAGE['menu_mobile'])) {
 		if (!jQuery('body').hasClass('menu_mobile')) {
 			jQuery('body').removeClass('top_panel_fixed').addClass('menu_mobile');
 			jQuery('header.top_panel_wrap ').hide();
@@ -842,7 +842,7 @@ function charity_is_hope_responsive_menu() {
 			if (!cat_menu.hasClass('inited')) {
 				cat_menu.removeClass('plain').addClass('inited');
 				cat_menu.find('ul.no_animated').removeClass('no_animated').addClass('animated');
-				charity_is_hope_init_sfmenu('body:not(.woocommerce) .widget_area:not(.footer_wrap) .widget_product_categories ul.product-categories');
+				weloveyou_init_sfmenu('body:not(.woocommerce) .widget_area:not(.footer_wrap) .widget_product_categories ul.product-categories');
 			}
 		}
 	}
@@ -850,7 +850,7 @@ function charity_is_hope_responsive_menu() {
 
 
 // Check if responsive menu need
-function charity_is_hope_is_responsive_need(max_width) {
+function weloveyou_is_responsive_need(max_width) {
 	"use strict";
 	var rez = false;
 	if (max_width > 0) {
@@ -865,7 +865,7 @@ function charity_is_hope_is_responsive_need(max_width) {
 
 
 // Fit video frames to document width
-function charity_is_hope_video_dimensions() {
+function weloveyou_video_dimensions() {
 	jQuery('.sc_video_frame').each(function() {
 		"use strict";
 		if (jQuery(this).parents('div:hidden,article:hidden').length > 0) return;
@@ -912,7 +912,7 @@ function charity_is_hope_video_dimensions() {
 			h_real = Math.round(percent ? w_real/ratio : w_real/w_attr*h_attr);
 		if (parseInt(video.attr('data-last-width'))==w_real) return;
 		if (mejs_cont.length > 0 && mejs) {
-			charity_is_hope_set_mejs_player_dimensions(video, w_real, h_real);
+			weloveyou_set_mejs_player_dimensions(video, w_real, h_real);
 		}
 		if (percent) {
 			video.height(h_real);
@@ -954,7 +954,7 @@ function charity_is_hope_video_dimensions() {
 		var t = Math.round((h1-h)/2);
 		if (parseInt(video.attr('data-last-width'))==w1) return;
 		if (mejs_cont.length > 0) {
-			charity_is_hope_set_mejs_player_dimensions(video, w1, h1);
+			weloveyou_set_mejs_player_dimensions(video, w1, h1);
 			mejs_cont.css({
 				//'left': -l+'px',
 				'top': -t+'px'
@@ -994,13 +994,13 @@ function charity_is_hope_video_dimensions() {
 }
 
 // Resize fullscreen video background
-function charity_is_hope_resize_video_background() {
+function weloveyou_resize_video_background() {
 	"use strict";
 	var bg = jQuery('.video_bg');
 	if (bg.length < 1) 
 		return;
-	if (CHARITY_IS_HOPE_STORAGE['media_elements_enabled'] && bg.find('.mejs-video').length == 0)  {
-		setTimeout(charity_is_hope_resize_video_background, 100);
+	if (weloveyou_STORAGE['media_elements_enabled'] && bg.find('.mejs-video').length == 0)  {
+		setTimeout(weloveyou_resize_video_background, 100);
 		return;
 	}
 	var video = bg.find('video');
@@ -1021,7 +1021,7 @@ function charity_is_hope_resize_video_background() {
 	var l = Math.round((w1-w)/2);
 	var t = Math.round((h1-h)/2);
 	if (bg.find('.mejs-container').length > 0) {
-		charity_is_hope_set_mejs_player_dimensions(bg.find('video'), w1, h1);
+		weloveyou_set_mejs_player_dimensions(bg.find('video'), w1, h1);
 		bg.find('.mejs-container').css({'left': -l+'px', 'top': -t+'px'});
 	} else
 		bg.find('video').css({'left': -l+'px', 'top': -t+'px'});
@@ -1029,7 +1029,7 @@ function charity_is_hope_resize_video_background() {
 }
 
 // Set Media Elements player dimensions
-function charity_is_hope_set_mejs_player_dimensions(video, w, h) {
+function weloveyou_set_mejs_player_dimensions(video, w, h) {
 	"use strict";
 	if (mejs) {
 		for (var pl in mejs.players) {
@@ -1045,7 +1045,7 @@ function charity_is_hope_set_mejs_player_dimensions(video, w, h) {
 }
 
 // Resize Fullscreen Slider
-function charity_is_hope_resize_fullscreen_slider() {
+function weloveyou_resize_fullscreen_slider() {
 	"use strict";
 	var slider_wrap = jQuery('.slider_wrap.slider_fullscreen');
 	if (slider_wrap.length < 1) 
@@ -1058,7 +1058,7 @@ function charity_is_hope_resize_fullscreen_slider() {
 }
 
 // Resize Alter portfolio elements
-function charity_is_hope_resize_alter_portfolio() {
+function weloveyou_resize_alter_portfolio() {
 	"use strict";
 	var wrap = jQuery('.isotope_wrap.inited');
 	if (wrap.length==0) return;
@@ -1098,9 +1098,9 @@ function charity_is_hope_resize_alter_portfolio() {
 //==============================================
 
 // Init Superfish menu
-function charity_is_hope_init_sfmenu(selector) {
+function weloveyou_init_sfmenu(selector) {
 	jQuery(selector).show().each(function() {
-		if (charity_is_hope_is_responsive_need() && (jQuery(this).attr('id')=='menu_main' || jQuery(this).attr('id')=='menu_side')) return;
+		if (weloveyou_is_responsive_need() && (jQuery(this).attr('id')=='menu_main' || jQuery(this).attr('id')=='menu_side')) return;
 		//document.write("hello")
 		jQuery(this).addClass('inited').superfish({
 			delay: 500,
@@ -1110,8 +1110,8 @@ function charity_is_hope_init_sfmenu(selector) {
 			animationOut: {
 				opacity: 'hide'
 			},
-			speed: 		CHARITY_IS_HOPE_STORAGE['css_animation'] ? 500 : 200,
-			speedOut:	CHARITY_IS_HOPE_STORAGE['css_animation'] ? 500 : 200,
+			speed: 		weloveyou_STORAGE['css_animation'] ? 500 : 200,
+			speedOut:	weloveyou_STORAGE['css_animation'] ? 500 : 200,
 			autoArrows: false,
 			dropShadows: false,
 			onBeforeShow: function(ul) {
@@ -1125,15 +1125,15 @@ function charity_is_hope_init_sfmenu(selector) {
 					else
 						jQuery(this).removeClass('submenu_left');
 				}
-				if (CHARITY_IS_HOPE_STORAGE['css_animation']) {
-					jQuery(this).removeClass('animated fast '+CHARITY_IS_HOPE_STORAGE['menu_animation_out']);
-					jQuery(this).addClass('animated fast '+CHARITY_IS_HOPE_STORAGE['menu_animation_in']);
+				if (weloveyou_STORAGE['css_animation']) {
+					jQuery(this).removeClass('animated fast '+weloveyou_STORAGE['menu_animation_out']);
+					jQuery(this).addClass('animated fast '+weloveyou_STORAGE['menu_animation_in']);
 				}
 			},
 			onBeforeHide: function(ul) {
-				if (CHARITY_IS_HOPE_STORAGE['css_animation']) {
-					jQuery(this).removeClass('animated fast '+CHARITY_IS_HOPE_STORAGE['menu_animation_in']);
-					jQuery(this).addClass('animated fast '+CHARITY_IS_HOPE_STORAGE['menu_animation_out']);
+				if (weloveyou_STORAGE['css_animation']) {
+					jQuery(this).removeClass('animated fast '+weloveyou_STORAGE['menu_animation_in']);
+					jQuery(this).addClass('animated fast '+weloveyou_STORAGE['menu_animation_out']);
 				}
 			}
 		});
@@ -1143,7 +1143,7 @@ function charity_is_hope_init_sfmenu(selector) {
 
 
 // Build page TOC from the tag's id
-function charity_is_hope_build_page_toc() {
+function weloveyou_build_page_toc() {
 	"use strict";
 	var toc = '', toc_count = 0;
 	jQuery('[id^="toc_"],.sc_anchor').each(function(idx) {
@@ -1162,17 +1162,17 @@ function charity_is_hope_build_page_toc() {
 			+'<a href="'+(url ? url : '#'+id)+'" class="toc_icon'+(title ? ' with_title' : '')+' '+icon+'">'+(title ? '<span class="toc_title">'+title+'</span>' : '')+'</a>'
 			+'</div>';
 	});
-	if (toc_count > (CHARITY_IS_HOPE_STORAGE['toc_menu_home'] ? 1 : 0) + (CHARITY_IS_HOPE_STORAGE['toc_menu_top'] ? 1 : 0)) {
+	if (toc_count > (weloveyou_STORAGE['toc_menu_home'] ? 1 : 0) + (weloveyou_STORAGE['toc_menu_top'] ? 1 : 0)) {
 		if (jQuery('#toc').length > 0)
 			jQuery('#toc .toc_inner').html(toc);
 		else
-			jQuery('body').append('<div id="toc" class="toc_'+CHARITY_IS_HOPE_STORAGE['toc_menu']+'"><div class="toc_inner">'+toc+'</div></div>');
+			jQuery('body').append('<div id="toc" class="toc_'+weloveyou_STORAGE['toc_menu']+'"><div class="toc_inner">'+toc+'</div></div>');
 	}
 }
 
 
 // Show current page title on the responsive menu button
-function charity_is_hope_show_current_menu_item(menu, button) {
+function weloveyou_show_current_menu_item(menu, button) {
 	"use strict";
 	menu.find('a').each(function () {
 		var menu_link = jQuery(this);
@@ -1190,7 +1190,7 @@ function charity_is_hope_show_current_menu_item(menu, button) {
 //=====================================================
 
 // First init isotope containers
-function charity_is_hope_init_isotope() {
+function weloveyou_init_isotope() {
 	"use strict";
 
 	var all_images_complete = true;
@@ -1198,11 +1198,11 @@ function charity_is_hope_init_isotope() {
 	// Check if all images in isotope wrapper are loaded
 	jQuery('.isotope_wrap:not(.inited)').each(function () {
 		"use strict";
-		all_images_complete = all_images_complete && charity_is_hope_check_images_complete(jQuery(this));
+		all_images_complete = all_images_complete && weloveyou_check_images_complete(jQuery(this));
 	});
 	// Wait for images loading
-	if (!all_images_complete && CHARITY_IS_HOPE_STORAGE['isotope_init_counter']++ < 30) {
-		setTimeout(charity_is_hope_init_isotope, 200);
+	if (!all_images_complete && weloveyou_STORAGE['isotope_init_counter']++ < 30) {
+		setTimeout(weloveyou_init_isotope, 200);
 		return;
 	}
 
@@ -1233,7 +1233,7 @@ function charity_is_hope_init_isotope() {
 		var isotope_container = jQuery(this);
 
 		// Init shortcodes
-		charity_is_hope_sc_init(isotope_container);
+		weloveyou_sc_init(isotope_container);
 
 		// If in scroll container - no init isotope
 		if (isotope_container.parents('.sc_scroll').length > 0) {
@@ -1258,20 +1258,20 @@ function charity_is_hope_init_isotope() {
 			});
 			
 			// Resize Alter portfolio elements
-			charity_is_hope_resize_alter_portfolio();
+			weloveyou_resize_alter_portfolio();
 			
 		}, 500);
 
 	});		
 }
 
-function charity_is_hope_init_appended_isotope(posts_container, filters) {
+function weloveyou_init_appended_isotope(posts_container, filters) {
 	"use strict";
 	
 	if (posts_container.parents('.sc_scroll_horizontal').length > 0) return;
 	
-	if (!charity_is_hope_check_images_complete(posts_container) && CHARITY_IS_HOPE_STORAGE['isotope_init_counter']++ < 30) {
-		setTimeout(function() { charity_is_hope_init_appended_isotope(posts_container, filters); }, 200);
+	if (!weloveyou_check_images_complete(posts_container) && weloveyou_STORAGE['isotope_init_counter']++ < 30) {
+		setTimeout(function() { weloveyou_init_appended_isotope(posts_container, filters); }, 200);
 		return;
 	}
 	// Add filters
@@ -1282,7 +1282,7 @@ function charity_is_hope_init_appended_isotope(posts_container, filters) {
 		}
 	}
 	// Init shortcodes in added elements
-	charity_is_hope_sc_init(posts_container);
+	weloveyou_sc_init(posts_container);
 	// Get added elements
 	var elems = posts_container.find('.isotope_item:not(.isotope_item_show)');
 	// Notify isotope about added elements with timeout
@@ -1298,19 +1298,19 @@ function charity_is_hope_init_appended_isotope(posts_container, filters) {
 // Post formats init
 //=====================================================
 
-function charity_is_hope_init_post_formats() {
+function weloveyou_init_post_formats() {
 	"use strict";
 
 	// Call theme specific action (if exists)
-	if (window.charity_is_hope_theme_init_post_formats) charity_is_hope_theme_init_post_formats();
+	if (window.weloveyou_theme_init_post_formats) weloveyou_theme_init_post_formats();
 
 	// MediaElement init
-	charity_is_hope_init_media_elements(jQuery('body'));
+	weloveyou_init_media_elements(jQuery('body'));
 	
 	// Isotope first init
 	if (jQuery('.isotope_wrap:not(.inited)').length > 0) {
-		CHARITY_IS_HOPE_STORAGE['isotope_init_counter'] = 0;
-		charity_is_hope_init_isotope();
+		weloveyou_STORAGE['isotope_init_counter'] = 0;
+		weloveyou_init_isotope();
 	}
 
 	// Hover Effect 'Dir'
@@ -1321,7 +1321,7 @@ function charity_is_hope_init_post_formats() {
 	}
 
 	// Popup init
-	if (CHARITY_IS_HOPE_STORAGE['popup_engine'] == 'pretty') {
+	if (weloveyou_STORAGE['popup_engine'] == 'pretty') {
 		jQuery("a[href$='jpg'],a[href$='jpeg'],a[href$='png'],a[href$='gif']").attr('rel', 'prettyPhoto[slideshow]');
 		var images = jQuery("a[rel*='prettyPhoto']:not(.inited):not(.esgbox):not([data-rel*='pretty']):not([rel*='magnific']):not([data-rel*='magnific'])").addClass('inited');
 		try {
@@ -1331,7 +1331,7 @@ function charity_is_hope_init_post_formats() {
 				deeplinking: false
 			});
 		} catch (e) {};
-	} else if (CHARITY_IS_HOPE_STORAGE['popup_engine']=='magnific') {
+	} else if (weloveyou_STORAGE['popup_engine']=='magnific') {
 		jQuery("a[href$='jpg'],a[href$='jpeg'],a[href$='png'],a[href$='gif']").attr('rel', 'magnific');
 		var images = jQuery("a[rel*='magnific']:not(.inited):not(.esgbox):not(.prettyphoto):not([rel*='pretty']):not([data-rel*='pretty'])").addClass('inited');
 		try {
@@ -1344,12 +1344,12 @@ function charity_is_hope_init_post_formats() {
 				midClick: true,
 				//removalDelay: 500, 
 				preloader: true,
-				tLoading: CHARITY_IS_HOPE_STORAGE['strings']['magnific_loading'],
+				tLoading: weloveyou_STORAGE['strings']['magnific_loading'],
 				gallery:{
 					enabled: true
 				},
 				image: {
-					tError: CHARITY_IS_HOPE_STORAGE['strings']['magnific_error'],
+					tError: weloveyou_STORAGE['strings']['magnific_error'],
 					verticalFit: true
 				}
 			});
@@ -1370,11 +1370,11 @@ function charity_is_hope_init_post_formats() {
 				var inc = button.hasClass('enabled') ? 1 : -1;
 				var post_id = button.data('postid');
 				var likes = Number(button.data('likes'))+inc;
-				var cookie_likes = charity_is_hope_get_cookie('charity_is_hope_likes');
+				var cookie_likes = weloveyou_get_cookie('weloveyou_likes');
 				if (cookie_likes === undefined || cookie_likes===null) cookie_likes = '';
-				jQuery.post(CHARITY_IS_HOPE_STORAGE['ajax_url'], {
+				jQuery.post(weloveyou_STORAGE['ajax_url'], {
 					action: 'post_counter',
-					nonce: CHARITY_IS_HOPE_STORAGE['ajax_nonce'],
+					nonce: weloveyou_STORAGE['ajax_nonce'],
 					post_id: post_id,
 					likes: likes
 				}).done(function(response) {
@@ -1382,7 +1382,7 @@ function charity_is_hope_init_post_formats() {
 					try {
 						rez = JSON.parse(response);
 					} catch (e) {
-						rez = { error: CHARITY_IS_HOPE_STORAGE['ajax_error'] };
+						rez = { error: weloveyou_STORAGE['ajax_error'] };
 						console.log(response);
 					}
 					if (rez.error === '') {
@@ -1396,9 +1396,9 @@ function charity_is_hope_init_post_formats() {
 							cookie_likes = cookie_likes.replace(','+post_id+',', ',');
 						}
 						button.data('likes', likes).attr('title', title).find('.post_counters_number').html(likes);
-						charity_is_hope_set_cookie('charity_is_hope_likes', cookie_likes, 365);
+						weloveyou_set_cookie('weloveyou_likes', cookie_likes, 365);
 					} else {
-						charity_is_hope_message_warning(CHARITY_IS_HOPE_STORAGE['strings']['error_like']);
+						weloveyou_message_warning(weloveyou_STORAGE['strings']['error_like']);
 					}
 				});
 				e.preventDefault();
@@ -1433,11 +1433,11 @@ function charity_is_hope_init_post_formats() {
 					var video = jQuery(this).removeClass('sc_video_play_button hover_icon hover_icon_play').data('video');
 					if (video!=='') {
 						jQuery(this).empty().html(video);
-						charity_is_hope_video_dimensions();
+						weloveyou_video_dimensions();
 						var video_tag = jQuery(this).find('video');
 						var w = video_tag.width();
 						var h = video_tag.height();
-						charity_is_hope_init_media_elements(jQuery(this));
+						weloveyou_init_media_elements(jQuery(this));
 						// Restore WxH attributes, because Chrome broke it!
 						jQuery(this).find('video').css({'width':w, 'height': h}).attr({'width':w, 'height': h});
 					}
@@ -1449,8 +1449,8 @@ function charity_is_hope_init_post_formats() {
 }
 
 
-function charity_is_hope_init_media_elements(cont) {
-	if (CHARITY_IS_HOPE_STORAGE['media_elements_enabled'] && cont.find('audio,video').length > 0) {
+function weloveyou_init_media_elements(cont) {
+	if (weloveyou_STORAGE['media_elements_enabled'] && cont.find('audio,video').length > 0) {
 		if (window.mejs) {
 			window.mejs.MepDefaults.enableAutosize = false;
 			window.mejs.MediaElementDefaults.enableAutosize = false;
@@ -1482,7 +1482,7 @@ function charity_is_hope_init_media_elements(cont) {
 				}
 			});
 		} else
-			setTimeout(function() { charity_is_hope_init_media_elements(cont); }, 400);
+			setTimeout(function() { weloveyou_init_media_elements(cont); }, 400);
 	}
 }
 
@@ -1495,40 +1495,40 @@ function charity_is_hope_init_media_elements(cont) {
 //==============================================
 
 // Show system message (bubble from previous page)
-function charity_is_hope_show_system_message() {
-	if (CHARITY_IS_HOPE_STORAGE['system_message'] && CHARITY_IS_HOPE_STORAGE['system_message']['message']) {
-		if (CHARITY_IS_HOPE_STORAGE['system_message']['status'] == 'success')
-			charity_is_hope_message_success(CHARITY_IS_HOPE_STORAGE['system_message']['message'], CHARITY_IS_HOPE_STORAGE['system_message']['header']);
-		else if (CHARITY_IS_HOPE_STORAGE['system_message']['status'] == 'info')
-			charity_is_hope_message_info(CHARITY_IS_HOPE_STORAGE['system_message']['message'], CHARITY_IS_HOPE_STORAGE['system_message']['header']);
-		else if (CHARITY_IS_HOPE_STORAGE['system_message']['status'] == 'error' || CHARITY_IS_HOPE_STORAGE['system_message']['status'] == 'warning')
-			charity_is_hope_message_warning(CHARITY_IS_HOPE_STORAGE['system_message']['message'], CHARITY_IS_HOPE_STORAGE['system_message']['header']);
+function weloveyou_show_system_message() {
+	if (weloveyou_STORAGE['system_message'] && weloveyou_STORAGE['system_message']['message']) {
+		if (weloveyou_STORAGE['system_message']['status'] == 'success')
+			weloveyou_message_success(weloveyou_STORAGE['system_message']['message'], weloveyou_STORAGE['system_message']['header']);
+		else if (weloveyou_STORAGE['system_message']['status'] == 'info')
+			weloveyou_message_info(weloveyou_STORAGE['system_message']['message'], weloveyou_STORAGE['system_message']['header']);
+		else if (weloveyou_STORAGE['system_message']['status'] == 'error' || weloveyou_STORAGE['system_message']['status'] == 'warning')
+			weloveyou_message_warning(weloveyou_STORAGE['system_message']['message'], weloveyou_STORAGE['system_message']['header']);
 	}
 }
 
 // Toggle popups
-function charity_is_hope_toggle_popup(popup) {
+function weloveyou_toggle_popup(popup) {
 	if (popup.css('display')!='none')
-		charity_is_hope_hide_popup(popup);
+		weloveyou_hide_popup(popup);
 	else
-		charity_is_hope_show_popup(popup);
+		weloveyou_show_popup(popup);
 }
 
 // Show popups
-function charity_is_hope_show_popup(popup) {
+function weloveyou_show_popup(popup) {
 	if (popup.css('display')=='none') {
-		if (false && CHARITY_IS_HOPE_STORAGE['css_animation'])
-			popup.show().removeClass('animated fast '+CHARITY_IS_HOPE_STORAGE['menu_animation_out']).addClass('animated fast '+CHARITY_IS_HOPE_STORAGE['menu_animation_in']);
+		if (false && weloveyou_STORAGE['css_animation'])
+			popup.show().removeClass('animated fast '+weloveyou_STORAGE['menu_animation_out']).addClass('animated fast '+weloveyou_STORAGE['menu_animation_in']);
 		else
 			popup.slideDown();
 	}
 }
 
 // Hide popups
-function charity_is_hope_hide_popup(popup) {
+function weloveyou_hide_popup(popup) {
 	if (popup.css('display')!='none') {
-		if (false && CHARITY_IS_HOPE_STORAGE['css_animation'])
-			popup.removeClass('animated fast '+CHARITY_IS_HOPE_STORAGE['menu_animation_in']).addClass('animated fast '+CHARITY_IS_HOPE_STORAGE['menu_animation_out']).delay(500).hide();
+		if (false && weloveyou_STORAGE['css_animation'])
+			popup.removeClass('animated fast '+weloveyou_STORAGE['menu_animation_in']).addClass('animated fast '+weloveyou_STORAGE['menu_animation_out']).delay(500).hide();
 		else
 			popup.fadeOut();
 	}
@@ -1542,11 +1542,11 @@ function charity_is_hope_hide_popup(popup) {
 
 
 // Comments form
-function charity_is_hope_comments_validate(form) {
+function weloveyou_comments_validate(form) {
 	"use strict";
 	form.find('input').removeClass('error_fields_class');
 	var rules = {
-		error_message_text: CHARITY_IS_HOPE_STORAGE['strings']['error_global'],	// Global error message text (if don't write in checked field)
+		error_message_text: weloveyou_STORAGE['strings']['error_global'],	// Global error message text (if don't write in checked field)
 		error_message_show: true,									// Display or not error message
 		error_message_time: 4000,									// Error message display time
 		error_message_class: 'sc_infobox sc_infobox_style_error',	// Class appended to error message block
@@ -1555,8 +1555,8 @@ function charity_is_hope_comments_validate(form) {
 		rules: [
 			{
 				field: 'comment',
-				min_length: { value: 1, message: CHARITY_IS_HOPE_STORAGE['strings']['text_empty'] },
-				max_length: { value: CHARITY_IS_HOPE_STORAGE['comments_maxlength'], message: CHARITY_IS_HOPE_STORAGE['strings']['text_long']}
+				min_length: { value: 1, message: weloveyou_STORAGE['strings']['text_empty'] },
+				max_length: { value: weloveyou_STORAGE['comments_maxlength'], message: weloveyou_STORAGE['strings']['text_long']}
 			}
 		]
 	};
@@ -1564,8 +1564,8 @@ function charity_is_hope_comments_validate(form) {
 		rules.rules.push(
 			{
 				field: 'author',
-				min_length: { value: 1, message: CHARITY_IS_HOPE_STORAGE['strings']['name_empty']},
-				max_length: { value: 60, message: CHARITY_IS_HOPE_STORAGE['strings']['name_long']}
+				min_length: { value: 1, message: weloveyou_STORAGE['strings']['name_empty']},
+				max_length: { value: 60, message: weloveyou_STORAGE['strings']['name_long']}
 			}
 		);
 	}
@@ -1573,22 +1573,22 @@ function charity_is_hope_comments_validate(form) {
 		rules.rules.push(
 			{
 				field: 'email',
-				min_length: { value: 7, message: CHARITY_IS_HOPE_STORAGE['strings']['email_empty']},
-				max_length: { value: 60, message: CHARITY_IS_HOPE_STORAGE['strings']['email_long']},
-				mask: { value: CHARITY_IS_HOPE_STORAGE['email_mask'], message: CHARITY_IS_HOPE_STORAGE['strings']['email_not_valid']}
+				min_length: { value: 7, message: weloveyou_STORAGE['strings']['email_empty']},
+				max_length: { value: 60, message: weloveyou_STORAGE['strings']['email_long']},
+				mask: { value: weloveyou_STORAGE['email_mask'], message: weloveyou_STORAGE['strings']['email_not_valid']}
 			}
 		);
 	}
-	var error = charity_is_hope_form_validate(form, rules);
+	var error = weloveyou_form_validate(form, rules);
 	return !error;
 }
 
 
 // Login form
-function charity_is_hope_login_validate(form) {
+function weloveyou_login_validate(form) {
 	"use strict";
 	form.find('input').removeClass('error_fields_class');
-	var error = charity_is_hope_form_validate(form, {
+	var error = weloveyou_form_validate(form, {
 		error_message_show: true,
 		error_message_time: 4000,
 		error_message_class: 'sc_infobox sc_infobox_style_error',
@@ -1597,20 +1597,20 @@ function charity_is_hope_login_validate(form) {
 		rules: [
 			{
 				field: "log",
-				min_length: { value: 1, message: CHARITY_IS_HOPE_STORAGE['strings']['login_empty'] },
-				max_length: { value: 60, message: CHARITY_IS_HOPE_STORAGE['strings']['login_long'] }
+				min_length: { value: 1, message: weloveyou_STORAGE['strings']['login_empty'] },
+				max_length: { value: 60, message: weloveyou_STORAGE['strings']['login_long'] }
 			},
 			{
 				field: "pwd",
-				min_length: { value: 4, message: CHARITY_IS_HOPE_STORAGE['strings']['password_empty'] },
-				max_length: { value: 30, message: CHARITY_IS_HOPE_STORAGE['strings']['password_long'] }
+				min_length: { value: 4, message: weloveyou_STORAGE['strings']['password_empty'] },
+				max_length: { value: 30, message: weloveyou_STORAGE['strings']['password_long'] }
 			}
 		]
 	});
 	if (!error) {
-		jQuery.post(CHARITY_IS_HOPE_STORAGE['ajax_url'], {
+		jQuery.post(weloveyou_STORAGE['ajax_url'], {
 			action: 'login_user',
-			nonce: CHARITY_IS_HOPE_STORAGE['ajax_nonce'],
+			nonce: weloveyou_STORAGE['ajax_nonce'],
 			remember: form.find('#rememberme').val(),
 			user_log: form.find('#log').val(),
 			user_pwd: form.find('#password').val()
@@ -1619,7 +1619,7 @@ function charity_is_hope_login_validate(form) {
 			try {
 				rez = JSON.parse(response);
 			} catch (e) {
-				rez = { error: CHARITY_IS_HOPE_STORAGE['ajax_error'] };
+				rez = { error: weloveyou_STORAGE['ajax_error'] };
 				console.log(response);
 			}
 			var result_box = form.find('.result');
@@ -1627,12 +1627,12 @@ function charity_is_hope_login_validate(form) {
 			if (result_box.length==0) result_box = form.after('<div class="result"></div>').next('.result');
 			result_box.toggleClass('sc_infobox_style_error', false).toggleClass('sc_infobox_style_success', false);
 			if (rez.error === '') {
-				result_box.addClass('sc_infobox sc_infobox_style_success').html(CHARITY_IS_HOPE_STORAGE['strings']['login_success']);
+				result_box.addClass('sc_infobox sc_infobox_style_success').html(weloveyou_STORAGE['strings']['login_success']);
 				setTimeout(function() { 
 					location.reload(); 
 					}, 3000);
 			} else {
-				result_box.addClass('sc_infobox sc_infobox_style_error').html(CHARITY_IS_HOPE_STORAGE['strings']['login_failed'] + '<br>' + rez.error);
+				result_box.addClass('sc_infobox sc_infobox_style_error').html(weloveyou_STORAGE['strings']['login_failed'] + '<br>' + rez.error);
 			}
 			result_box.fadeIn().delay(3000).fadeOut();
 		});
@@ -1642,10 +1642,10 @@ function charity_is_hope_login_validate(form) {
 
 
 // Registration form 
-function charity_is_hope_registration_validate(form) {
+function weloveyou_registration_validate(form) {
 	"use strict";
 	form.find('input').removeClass('error_fields_class');
-	var error = charity_is_hope_form_validate(form, {
+	var error = weloveyou_form_validate(form, {
 		error_message_show: true,
 		error_message_time: 4000,
 		error_message_class: "sc_infobox sc_infobox_style_error",
@@ -1654,34 +1654,34 @@ function charity_is_hope_registration_validate(form) {
 		rules: [
 			{
 				field: "registration_agree",
-				state: { value: 'checked', message: CHARITY_IS_HOPE_STORAGE['strings']['not_agree'] },
+				state: { value: 'checked', message: weloveyou_STORAGE['strings']['not_agree'] },
 			},
 			{
 				field: "registration_username",
-				min_length: { value: 1, message: CHARITY_IS_HOPE_STORAGE['strings']['login_empty'] },
-				max_length: { value: 60, message: CHARITY_IS_HOPE_STORAGE['strings']['login_long'] }
+				min_length: { value: 1, message: weloveyou_STORAGE['strings']['login_empty'] },
+				max_length: { value: 60, message: weloveyou_STORAGE['strings']['login_long'] }
 			},
 			{
 				field: "registration_email",
-				min_length: { value: 7, message: CHARITY_IS_HOPE_STORAGE['strings']['email_empty'] },
-				max_length: { value: 60, message: CHARITY_IS_HOPE_STORAGE['strings']['email_long'] },
-				mask: { value: CHARITY_IS_HOPE_STORAGE['email_mask'], message: CHARITY_IS_HOPE_STORAGE['strings']['email_not_valid'] }
+				min_length: { value: 7, message: weloveyou_STORAGE['strings']['email_empty'] },
+				max_length: { value: 60, message: weloveyou_STORAGE['strings']['email_long'] },
+				mask: { value: weloveyou_STORAGE['email_mask'], message: weloveyou_STORAGE['strings']['email_not_valid'] }
 			},
 			{
 				field: "registration_pwd",
-				min_length: { value: 4, message: CHARITY_IS_HOPE_STORAGE['strings']['password_empty'] },
-				max_length: { value: 30, message: CHARITY_IS_HOPE_STORAGE['strings']['password_long'] }
+				min_length: { value: 4, message: weloveyou_STORAGE['strings']['password_empty'] },
+				max_length: { value: 30, message: weloveyou_STORAGE['strings']['password_long'] }
 			},
 			{
 				field: "registration_pwd2",
-				equal_to: { value: 'registration_pwd', message: CHARITY_IS_HOPE_STORAGE['strings']['password_not_equal'] }
+				equal_to: { value: 'registration_pwd', message: weloveyou_STORAGE['strings']['password_not_equal'] }
 			}
 		]
 	});
 	if (!error) {
-		jQuery.post(CHARITY_IS_HOPE_STORAGE['ajax_url'], {
+		jQuery.post(weloveyou_STORAGE['ajax_url'], {
 			action: 'registration_user',
-			nonce: CHARITY_IS_HOPE_STORAGE['ajax_nonce'],
+			nonce: weloveyou_STORAGE['ajax_nonce'],
 			user_name: 	form.find('#registration_username').val(),
 			user_email: form.find('#registration_email').val(),
 			user_pwd: 	form.find('#registration_pwd').val()
@@ -1690,7 +1690,7 @@ function charity_is_hope_registration_validate(form) {
 			try {
 				rez = JSON.parse(response);
 			} catch (e) {
-				rez = { error: CHARITY_IS_HOPE_STORAGE['ajax_error'] };
+				rez = { error: weloveyou_STORAGE['ajax_error'] };
 				console.log(response);
 			}
 			var result_box = form.find('.result');
@@ -1698,12 +1698,12 @@ function charity_is_hope_registration_validate(form) {
 			if (result_box.length==0) result_box = form.after('<div class="result"></div>').next('.result');
 			result_box.toggleClass('sc_infobox_style_error', false).toggleClass('sc_infobox_style_success', false);
 			if (rez.error === '') {
-				result_box.addClass('sc_infobox sc_infobox_style_success').html(CHARITY_IS_HOPE_STORAGE['strings']['registration_success']);
+				result_box.addClass('sc_infobox sc_infobox_style_success').html(weloveyou_STORAGE['strings']['registration_success']);
 				setTimeout(function() { 
 					jQuery('.popup_login_link').trigger('click'); 
 					}, 3000);
 			} else {
-				result_box.addClass('sc_infobox sc_infobox_style_error').html(CHARITY_IS_HOPE_STORAGE['strings']['registration_failed'] + ' ' + rez.error);
+				result_box.addClass('sc_infobox sc_infobox_style_error').html(weloveyou_STORAGE['strings']['registration_failed'] + ' ' + rez.error);
 			}
 			result_box.fadeIn().delay(3000).fadeOut();
 		});
